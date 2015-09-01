@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/zhuce.css">
+	<script src="__PUBLIC__/home/js/jqueryzhuce.js"></script>
+	<script src="__PUBLIC__/home/js/emailAutoCompletezhuce.js"></script>
+	<link href="__PUBLIC__/home/css/stylezhuce.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="bd">
+	<div>
+		<!-- 头部的 -->
+		<div class="head">
+			<a href="" class="head_logo"></a>
+            <a class="head_g"style="text-shadow: 5px 2px 3px #000;">Word博客</a>
+            <a style="font-size:15px;color:#FFFFFF">分享生活</a>
+                
+		</div>
+		<!-- 主体注册内容 -->
+		<div class="main">
+			<div class="main_left">
+				<img src="" alt="" style="margin-top:20px;">
+
+			</div>
+			<div class="main_right">
+				<form action="{:U('zhuce')}" class="myform" method="post" onsubmit="return submi(this)">
+					<h3 class="h3">
+						<a href="__APP__/home/index">登录</a>
+												注册Word博客					
+					</h3>
+					
+					<div class="form_list">
+						<p class="form_box">
+							<input name="username" class="form_txt" type="text" placeholder="&#12288;Your Name" onblur="names(this)" onfocus="dedao(this)">
+							<span class="msg_err" id="test1" style="display:none;background: url("__PUBLIC__/home/images/20150120163001.png") no-repeat -25px -25px;"></span>
+                            <a style="position:absolute;"><img style="position:absolute;top:-39px;left: -6px;"src="__PUBLIC__/home/images/14.png"></a>
+							<div id="msgmobile1" class="msg_error" style="display:none;">你还没有填写昵称哦。</div>
+						</p>
+					</div>
+					<div class="form_list">
+						<p class="form_box">
+							<input name="password" class="form_txt" type="password" placeholder="&#12288;Password" onblur="pwd(this)" onfocus="dedaos(this)">
+							<span class="msg_err" id="test2" style="display:none;background: url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px;"></span>
+						 <a style="position:absolute;"><img style="position:absolute;top:-40px;left: -7px;"src="__PUBLIC__/home/images/15.png"></a>
+							<div id="msgmobile2" class="msg_error" style="display:none;"><span></span>你还没有填写密码哦。</div>
+						</p>
+					</div>
+					<div class="form_list" id="pwdss" style="display:none;">
+						<p class="form_box">
+							<input name="pwds" class="form_txt" type="password" placeholder="确定密码密码" onblur="pwds(this)" onfocus="dedao(this)">
+							<span class="msg_err" id="test3" style="display:none;background: url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px;"></span>
+							<span class="pwd_icon"></span>
+							<div id="msgmobile3" class="msg_error" style="display:none;"><span></span>你还没有填写确定密码哦。</div>
+						</p>
+                    </div>
+
+                    <div style="width:320px;">
+			            <label>验证码：</label>
+			            <input style="width:97px;"type="text" name="yzm" maxlength="4" id="code" tabindex="3"/>
+			            <div style="margin-top: -30px;">
+				        <img style="margin-left: 171px;"src="{:U('home/login/yzm')}" height="35px" width="150px" onClick="this.src+='?' + Math.random();" alt="点击刷新验证码!"/>
+			            </div>
+		            </div>
+					<div class="form_sub">
+                        <input type="submit" value="立即注册" class="sub"style="border-radius: 5px;border: 3px solid;box-shadow: 0px 0px 15px #000;
+                        
+                        ">
+					</div>
+					<div style="height:100px;">
+                    
+					</div>
+				</form>
+			</div>
+            <div class="clear"></div>
+            
+		</div>
+
+	</div>
+</body>
+<script>
+	
+	var inps = document.getElementsByTagName('input');
+	var msgmobile = document.getElementById('msgmobile');
+	var pwdss = document.getElementById('pwdss');
+	var test = document.getElementById('test');
+	var msgmobile1 = document.getElementById('msgmobile1');
+	var test1 = document.getElementById('test1');
+	var msgmobile2 = document.getElementById('msgmobile2');
+	var test2 = document.getElementById('test2');
+	var msgmobile3 = document.getElementById('msgmobile3');
+	var test3 = document.getElementById('test3');
+	var s2 = false;
+	var s3 = false;
+	var s4 = false;
+
+
+
+	// 验证昵称
+	function names(obj){
+		s2 = false;
+		obj.style.borderColor = 'red';
+		msgmobile1.style.display = 'none';
+		test1.style.display = 'none';
+		msgmobile1.innerHTML = '你还没有填写昵称哦。';
+		test1.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px';
+		var val = obj.value;
+		var	newval = val.trim();
+		var reg = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+		emailp = reg.test(newval);
+		if(!newval){
+			msgmobile1.style.display = 'block';
+			test1.style.display = 'block';
+		}else if(!emailp){
+			msgmobile1.innerHTML = '昵称格式错误,请重新输入哦!';
+			msgmobile1.style.display = 'block';
+			test1.style.display = 'block';
+		}else{
+			test1.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -50px -25px';
+			test1.style.display = 'block';
+			s2 = true;
+		}
+		// ajax验证昵称
+		$.post('{:U('userdoadd')}',{'username':newval},function(datas){
+			if(datas == 'yes'){
+				msgmobile1.innerHTML = '此昵称已经存在,请重新输入哦!';
+				msgmobile1.style.display = 'block';
+				test1.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px';
+				test1.style.display = 'block';
+			}
+		});
+	}
+	// 验证密码
+	function pwd(obj){
+		s3 = false;
+		obj.style.borderColor = 'red';
+		msgmobile2.style.display = 'none';
+		test2.style.display = 'none';
+		msgmobile2.innerHTML = '你还没有填写密码哦。';
+		test2.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px';
+		var val = obj.value;
+		newvals = val.trim();
+		var reg = /^[a-zA-Z]\w{5,17}$/;
+		emailp = reg.test(newvals);
+		if(!newvals){
+			msgmobile2.style.display = 'block';
+			test2.style.display = 'block';
+		}else if(!emailp){
+			msgmobile2.innerHTML = '密码格式错误,请以字母开头,长度大于6位!';
+			msgmobile2.style.display = 'block';
+			test2.style.display = 'block';
+		}else{
+			test2.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -50px -25px';
+			test2.style.display = 'block';
+			s3 = true;
+		}
+	}
+	// 验证确定密码
+	// function pwds(obj){
+	// 	s4 = false;
+	// 	obj.style.borderColor = 'red';
+	// 	msgmobile3.style.display = 'none';
+	// 	test3.style.display = 'none';
+	// 	msgmobile3.innerHTML = '你还没有填写确认密码哦。';
+	// 	test3.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -25px -25px';
+	// 	var val = obj.value;
+	// 	var	newval = val.trim();
+	// 	var reg = /^[a-zA-Z]\w{5,17}$/;
+	// 	emailp = reg.test(newval);
+	// 	if(!newval){
+	// 		msgmobile3.style.display = 'block';
+	// 		test3.style.display = 'block';
+	// 	}else if(newval!=newvals){
+	// 		msgmobile3.innerHTML = '密码不一致,请重新输入哦!';
+	// 		msgmobile3.style.display = 'block';
+	// 		test3.style.display = 'block';
+	// 	}else{
+	// 		test3.style.background = 'url("__PUBLIC__/home/images/login_icon-4.png") no-repeat -50px -25px';
+	// 		test3.style.display = 'block';
+	// 		s4 = true;
+	// 	}
+	// }
+	function dedao(de){
+		de.style.borderColor = 'blue';
+	}
+	function dedaos(de){
+		de.style.borderColor = 'blue';
+		pwdss.style.display = 'block';
+	}
+	function submi(sub){
+		if(s2 && s3){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	</script>
+	<script type="text/javascript" language="javascript">
+
+		if({$yes} = 'cg'){
+			alert('注册成功');
+		}
+	</script>
+</html>

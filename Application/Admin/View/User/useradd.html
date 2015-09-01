@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<script src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<style>
+		.table tr th{text-align:center;width: 127px;}
+		.table tr td{text-align:center;width: 127px;}
+		.table{width:610px;margin:70px;}
+	</style>
+</head>
+<body>
+<div style="margin:0 auto;width:610px">
+	<form action="{:U('useradd')}" method="post" enctype="multipart/form-data">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr>
+			<th width="200">姓名</th>
+			<td width="300"><input type="text" onblur="check(this)" name="username" placeholder="用于登录"></td>
+			<td style="border-left:none;text-align:left" id="td1" width="300"><span></span></td>
+		</tr>
+		<tr>
+			<th>昵称</th>
+			<td><input type="text" onblur="nichen(this)" name="name" placeholder="昵称"></td>
+			<td style="border-left:none;text-align:left"><span id="td2"></span></td>
+		</tr>
+		<tr>
+			<th>密码</th>
+			<td><input type="password" onblur="mima(this)" name="password" placeholder="Password"></td>
+			<td style="border-left:none;text-align:left"><span id="pwd"></span></td>
+		</tr>
+		<tr>
+			<th>性别</th>
+			<td>
+				<input type="radio" name="sex" value="1"> 男&#12288;
+				<input type="radio" name="sex" value="2"> 女&#12288;
+				<input type="radio" name="sex" value="0" checked="checked"> 保密
+			</td>
+			<td style="border-left:none"></td>
+		</tr>
+		<tr>
+			<th>年龄</th>
+			<td><input type="text" name="age" placeholder="年龄"></td>
+			<td style="border-left:none"></td>
+		</tr>
+		<tr>
+			<th>邮箱</th>
+			<td><input type="text" onblur="useremail(this)" name="email" placeholder="Email"></td>
+			<td style="border-left:none;text-align:left"><span id="td3"></span></td>
+		</tr>
+		<tr>
+			<th>权限</th>
+			<td><select name="level">
+				<option value="0">管理员</option>
+				<option value="1" selected="selected">用户</option>
+			</select></td>
+			<td style="border-left:none;background:white" rowspan="2"><img src="__PUBLIC__/admin/uploads/default.jpg" id="img" width="100" height="100"></td>
+		</tr>
+		<tr>
+			<th>头像</th>
+			<td><input type="file" onchange="show()"  accept="image/jpeg" style="margin-left:50px;" id="f" name="pic" /></td>
+		</tr>
+		<script>
+            function show(){
+                var file = document.getElementById("f").files[0];
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.onload = function(){
+                    document.getElementById("img").src = fileReader.result;
+                }
+            }
+        </script>
+
+		<tr>
+			<td colspan="3"><input id="suba" type="submit" class="btn btn-info" value="添加用户"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+</body>
+<script>
+	var ko = false;
+	
+
+	function check(obj){
+		var name = obj.value;
+		if(name.length<=0){
+			$('#td1').html("<font style='color:red'>用户名不能为空</font>");
+			ko = true;
+			go(ko);
+			return false;
+		}
+		$.post('{:U("userdoadd")}',{'username':name},function(data){
+			if(data == '1'){
+					$('#td1').html("<font style='color:red'>用户名已存在</font>");
+					ko = true;
+					go(ko);
+				}else{
+					$('#td1').html("<font style='color:green'>用户名可以使用</font>")
+					ko = false;
+					go(ko);
+				}
+		});
+	}
+
+	function nichen(obj){
+		var name = obj.value;
+		if(name.length<=0){
+			$('#td2').html("<font style='color:red'>昵称不能为空</font>");
+			ko = true;
+			go(ko);
+			return false;
+		}
+		$.post('{:U("userdoadd")}',{'name':name},function(data){
+			if(data == '1'){
+				$('#td2').html("<font style='color:red'>昵称已存在</font>");
+				ko = true;
+				go(ko);
+			}else{
+				$('#td2').html("<font style='color:green'>昵称可使用</font>");
+				ko = false;
+				go(ko);
+			}
+		},'json');
+	}
+
+	function useremail(obj){
+		var you = obj.value;
+		if(you.length<=0){
+			$('#td3').html("<font style='color:red'>邮箱不能为空</font>");
+			ko = true;
+			go(ko);
+			return false;
+		}
+		$.post('{:U("userdoadd")}',{'email':you},function(data){
+			if(data == '1'){
+				$('#td3').html("<font style='color:red'>邮箱已存在</font>");
+				ko = true;
+				go(ko);
+			}else{
+				$('#td3').html("<font style='color:green'>邮箱可使用</font>");
+				ko = false;
+				go(ko);
+			}
+		},'json');
+	}
+
+	function mima(obj){
+		var pwd = obj.value;
+		if(pwd.length<=0){
+			$('#pwd').html("<font style='color:red'>密码不能为空</font>");
+			ko = true;
+			go(ko);
+		}else{
+			$('#pwd').html(" ");
+			ko = false;
+			go(ko);
+		}
+	}
+
+	function go(obj){
+		if(ko){
+			$('#suba').attr({'disabled':true,'style':'background:silver'}).val('请正确输入');
+		}else{
+			$('#suba').removeAttr('disabled').removeAttr('style').val('添加用户');
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://localhost/project/wordpress/?p=37 -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>{$list.title}</title>
+	<style>
+		.clear{list-style: none;}
+		ul li{line-height:10px;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<link rel="stylesheet" id="style-css" href="__PUBLIC__/style.css" type="text/css" media="all">
+	<script type="text/javascript" src="__PUBLIC__/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style type="text/css"></style>
+</head>
+<body class="single single-post postid-37 single-format-standard logged-in">
+	<!-- 顶部logo -->
+	<header id="header" class="header">
+	<div class="container-inner">
+	 	<div class="yusi-logo">
+	       <a href="http://localhost/">
+	            <h1>
+	                <span class="yusi-mono">风夏博客</span>
+	                <span class="yusi-bloger">- 一名技术宅的自我修养！</span>                     
+ 	           </h1>
+	        </a>
+	    </div>
+	</div>
+	<!-- 顶部导航 -->
+	<div id="nav-header" class="navbar">		
+		<ul class="nav">
+			<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-41"><a href="{:U('Index/index')}">首页</a></li>
+			<foreach name="catelist" item="val">
+			<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7"><a <if condition="$val.id eq 8">href="{:U('Index/index?sil='.$val['id'])}"<else/>href="{:U('Index/index?lid='.$val['id'])}"</if>>{$val.name}</a>
+				<ul class="sub-menu">
+					<foreach name="val.son" key="k" item="son">
+					<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="{:U('Index/index?sid='.$k)}">{$son}</a></li>
+					</foreach>
+				</ul>
+			</li>
+			</foreach>
+			<li style="float:right;">
+	            <div class="toggle-search"><i class="fa fa-search"></i></div>
+				<div class="search-expand" style="display: none;"><div class="search-expand-inner">
+				<form method="get" class="searchform themeform" onsubmit="location.href=&#39;http://localhost/project/wordpress/search/&#39; + encodeURIComponent(this.s.value).replace(/%20/g, &#39;+&#39;); return false;" action="http://localhost/">
+					<div><input type="ext" class="search" name="s" onblur="if(this.value==&#39;&#39;)this.value=&#39;search...&#39;;" onfocus="if(this.value==&#39;search...&#39;)this.value=&#39;&#39;;" value="search..."></div>
+				</form></div></div>
+			</li>
+		</ul>
+		<div class="screen-mini"><button data-type="screen-nav" class="btn btn-inverse screen-nav"><i class="fa fa-list"></i></button></div>
+		</div>		
+	</header>
+	<!-- 中间整体 -->
+	<section class="container">
+		<div class="speedbar">
+			<div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i></strong> 这是是最新消息、公告的区域</div>
+		</div>
+<div class="content-wrap">
+<div class="content">
+		<header class="article-header">
+			<h1 class="article-title"><a href="">{$list.title}</a></h1>
+			<div class="meta">
+				<span id="mute-category" class="muted"><i class="fa fa-list-alt"></i><a href="{:U('Index/index?sid='.$k)}"> {$list.term}</a></span>				
+				<span class="muted"><i class="fa fa-user"></i> <a href="">{$list.name}</a></span>
+				<time class="muted"><i class="fa fa-clock-o"></i>{$list.lasttime}</time>
+				<span class="muted"><i class="fa fa-eye"></i> {$list.view}℃</span>
+				<span class="muted"><i class="fa fa-comments-o"></i> <a href="">{$list.num}评论</a></span>
+				<a class="post-edit-link" href="">[编辑]</a>			
+				<a class="post-edit-link" href="javascript:;" onclick="sixin({$list[post_author]})">[私信作者]</a>			
+			</div>
+		</header>
+
+		<article class="article-content">
+			{$list.content}
+    		<!-- 喜欢按钮 -->
+			<div class="article-social">
+					<a href="javascript:;" data-action="ding" data-id="37" id="Addlike" class="action" data-original-title="" onclick="love('{$list.id}',this)"><i class="fa fa-heart-o"></i>喜欢 (<span class="count">{$list.zan}</span>)</a>
+			</div>
+			<script>
+				function love(id,obj){
+					$.post('{:U("love")}',{'id':id},function(data){
+						if(data){
+							var a = $(obj).children('span').html();
+							$(obj).children('span').html(parseInt(a)+1).end().attr('onclick',null);
+						}
+					},'json');
+				}
+			</script>
+		</article>
+		<footer class="article-footer"></footer>
+
+		<!-- 中部左边文章足部导航 -->
+		<!-- <nav class="article-nav">
+			<span class="article-nav-prev"><i class="fa fa-angle-double-left"></i> <a href="" rel="prev">此篇为测试文章</a></span>
+			<span class="article-nav-next"><a href="" rel="next">此篇为测试文章</a>  <i class="fa fa-angle-double-right"></i></span>
+		</nav> -->
+		<!-- 左边底部上层导航 -->
+
+		<script>
+		var box = new BlackBox;
+		function sixin(id){
+			var mk;
+			box.prompt('发送私信',function(data){
+				if(data){
+					if(mk){
+						box.alert('私信成功!');
+					}else{
+						box.alert('请先登录!');
+					}
+				}
+			},{
+				title:'私信作者',
+				value:'发送',
+				verify:function(data){
+					$.post('{:U("message")}',{'goal_id':id,'content':data},function(date){
+					if(date == 1){
+						mk = true;
+					}else{
+						mk = false;
+					}
+				},'json');
+					if(mk = true) return data;
+        		}
+			})
+		}
+		</script>
+		<!-- 脚部评论 -->
+		<div id="respond" class="no_webshot">
+			<!-- <form action="http://localhost/project/wordpress/wp-comments-post.php" method="post" id="commentform"> -->
+			
+			<div class="comt-title">
+				<div class="comt-avatar pull-left">
+					<img alt="" src="__PUBLIC__/admin/uploads/default.jpg" class="avatar avatar-54 photo" height="54" width="54">			</div>
+				<div class="comt-author pull-left">
+				{$list[0]['usname']}<span>发表我的评论</span>			</div>
+				<a id="cancel-comment-reply-link" class="pull-right" href="javascript:;">取消评论</a>
+			</div>
+			<div class="comt">
+				<div class="comt-box">
+					<textarea class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3"></textarea>
+					<div class="comt-ctrl">
+						<button class="btn btn-primary pull-right" type="submit" id="submit" tabindex="5"><i class="fa fa-check-square-o"></i> 提交评论</button>
+					</div>
+				</div>
+			</div>
+			<script>
+				var time = new Date();
+                timem = time.getMonth() + 1;
+                shijian = time.getFullYear() + '-' + timem + '-' + time.getDate();
+				// var nei = document.getElementById('comment');
+				//nei = $('#comment').val();
+				//function tijiao(){
+				//	alert(nei);
+				$('#submit').click(function(){
+					var nei = $('#comment').val();
+					if($.trim(nei).length <= 3){
+						alert('内容不能少于三个字');
+					}else{
+						var result = {$session['id']}+','+nei+','+{$list['id']};
+						$.get("{:U('Home/Comment/ajax')}",{'re':result},
+								function(dats){
+									if(dats == 1){
+										$('#conuser').first().before('<li style="list-style:none;" class="cat-item cat-item-1"><img style="width: 50px;height: 50px;margin-left:4px;" class="thumb" src="__PUBLIC__/admin/uploads/{$session["pic"]}"><a style="width:800px;margin-left: 6px;margin-top: -6px;height:60px;float:right;position: absolute;background:url("/project/Public/home/images/20150130113104.png");background-repeat: no-repeat;"><p style="margin-top: 8px;margin-left: 17px;">'+nei+'</p><span><div>'+"{$val['username']}"+'</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+shijian+'</span></a></li>');
+									}else if(dats == 'no'){
+										alert('您必须登陆后才能发表评论');
+									}
+								}
+								
+							);
+						
+					}
+				});
+				//}
+			</script>
+			<!-- </form> -->
+			<div class="widget widget_recent_entries"style="height:540px;">
+				<div class="title"><h2><a style="flaot:left;"><img style="margin-top: -7px;margin-left: -19px;"src="__PUBLIC__/home/images/20150121195104.png"></a><b>吐槽</b></h2></div>
+					<ul id="conuser">
+						<foreach name="com" item="val">
+						<li class="cat-item cat-item-1">
+							<foreach name="val.img" item="value">
+							<img style="width: 50px;height: 50px;margin-left:4px;"class="thumb" src="__PUBLIC__/admin/uploads/{$value.pic}">
+							</foreach>
+						    <a style="width:800px;margin-left: 6px;margin-top: -6px;height:60px;float:right;background:red;position: absolute;background:url('__PUBLIC__/home/images/20150130113104.png');background-repeat: no-repeat;"><p style="margin-top: 8px;margin-left: 15px;">{$val.conmment}</p><span style="display:block;margin-left:20px;"><div style="line-height:15px;">{$val.send_id}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$val.send_time}</span></a>
+						</li>
+						</foreach>
+					</ul>
+			</div>
+			
+		</div>
+</div>
+</div>
+<!-- 中部右边 -->
+
+<aside class="sidebar">	
+	<!-- 第一个 -->
+	<div class="widget widget_text">
+		<div class="textwidget">
+			<div class="social"></div>
+		</div>
+	</div>
+	<!-- 第二个 -->
+	<div class="widget widget_recent_entries">		
+		<div class="title"><h2>近期文章</h2></div>		
+		<ul>
+			<foreach name="jinqi" item="val" key="ke">
+			<li>
+				<a href="{:U('index?id='.$ke)}">{$val}</a>
+			</li>
+			</foreach>
+		</ul>
+	</div>
+	<!-- 第三个 -->
+	<div class="widget widget_archive"><div class="title"><h2>文章归档</h2></div>		
+		<ul>
+			<li><a href="">2015年一月</a></li>
+		</ul>
+	</div>
+	<div class="widget widget_categories">
+		<div class="title"><h2>分类目录</h2></div>
+		<ul>
+			<li class="cat-item cat-item-1"><a href="{:U('Index/index?sid='.$list[0]['id'])}">{$list['term']}</a></li>
+		</ul>
+	</div>
+	<!-- 第四个 -->
+	<div class="widget d_tag">
+		<div class="title"><h2></h2></div><div class="d_tags">暂无标签！</div>
+	</div>
+	<!-- 第五个 -->
+	<div class="widget d_comment">
+		<div class="title">
+			<h2></h2>
+		</div>
+		<ul></ul>
+	</div>
+	<!-- 邮件订阅 -->
+	<div class="widget d_subscribe">
+		<div class="title"><h2>邮件订阅</h2></div>
+		<form action="" target="_blank" method="post"><p>订阅精彩内容</p><input type="hidden" name="t" value="qf_booked_feedback">
+			<input type="hidden" name="id" value="">
+			<input type="email" name="to" class="rsstxt" placeholder="your@email.com" value="" required="">
+			<input type="submit" class="rssbutton" value="订阅">
+		</form>
+	</div>
+	<!-- 最后一个 -->
+	<div class="widget widget_meta">
+		<div class="title"><h2>功能</h2></div>
+		<ul>
+			<li><a href="/">管理站点</a></li>
+			<li><a href="">登出</a></li>
+			<li><a href="">文章<abbr title="">RSS</abbr></a></li>
+			<li><a href="">评论<abbr title="">RSS</abbr></a></li>
+			<li><a href="" title="">WordPress.org</a></li>
+		</ul>
+	</div>
+</aside>
+</section>
+
+<!-- 友情链接 -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="copyright pull-left">
+        	<a href="" title="欲思博客">欲思博客</a> 版权所有，保留一切权利 · 
+        	<a href="http://yusi123.com/sitemap.xml" title="站点地图">站点地图</a>   ·   基于WordPress构建   © 2011-2014  ·   托管于 
+        	<a rel="nofollow" target="_blank" href="">阿里云主机</a> &amp; 
+        	<a rel="nofollow" target="_blank" href="">七牛云存储</a>
+        </div>
+        <div class="trackcode pull-right"></div>
+    </div>
+</footer>
+
+<!-- 类同锚点 -->
+<div class="rollto" style="display: none;">
+	<button class="btn btn-inverse" data-type="totop" title="回顶部"><i class="fa fa-arrow-up"></i></button>
+	<button class="btn btn-inverse" data-type="torespond" title="发评论"><i class="fa fa-comment-o"></i></button>
+</div></body></html>

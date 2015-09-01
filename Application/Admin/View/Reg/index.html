@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html class=" hasFontSmoothing-true">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="__PUBLIC__/css/startpage.$7250.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/third-connect.$7176.css">
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <title>注册</title>
+<script type="text/javascript">
+    $(function(){
+        $('#reg-submit-box').click(function(){
+            var email = $('#reg-email').val();
+            var name = $('#reg-name').val();
+            var password = $('#reg-password').val();
+            var repassword = $('#reg-repassword').val();
+            if (email.search(/^\w+[@]([0-9]|[a-z])+[\.][a-z]{2,3}$/) == -1) {
+                alert("请输入正确的邮箱");
+            } else if (password.search(/^\S{6,12}$/) == -1) {
+                alert("密码格式为6-12位非空字符");
+            } else if (password !== repassword) {
+                alert("两次输入的密码不一致");
+            } else if (name.search(/^\w{5,10}$/) == -1) {
+                alert('用户名不符合规范，必须5-10位字母数字下划线');
+            } else {
+                $.ajax({
+                    type:"POST",
+                    url:"{:U('doreg')}",
+                    data:"email="+email+"&username="+name+"&password="+password,
+                    success:function(msg){
+                        if (msg == '1') {
+                            window.location="{:U('Admin/Index/Index')}";
+                        } else {
+                            alert('抱歉，用户名或邮箱已被注册');
+                        }
+                    }
+                });
+            }
+        });
+        $('#reg-email').focus(function(){
+            $("[for='reg-email']").html('');
+        });
+        $('#reg-name').focus(function(){
+            $("[for='reg-name']").html('');
+        });
+        $('#reg-password').focus(function(){
+            $("[for='reg-password']").html('');
+        });
+
+        $('#reg-repassword').focus(function(){
+            $("[for='reg-repassword']").html('');
+        });
+    });
+</script>
+</head>
+<body style="height: 638px;"class="h">
+    <div id="connect-content" style="display: block;">
+
+        <div id="userInfo" class="user-info clearfix" style="padding-top: 79.2px;">
+
+            <div class="user-info-text left">
+                <div class="user-name">
+                    <img src="__PUBLIC__/image/logo-0518.$63962blue.png"/>
+                </div>
+            </div>
+        </div>
+        <div id="sky-form" class="connect-form" style="margin-top:10px">
+            <div id="switchForm" class="switch-form-reg">
+                <div id="switch-reg" class="switch-disable left"><a style="width:100%;height:100%;display:inline-block" href="{:U('Admin/Login/login')}">会员登录</a></div>
+                <div id="switch-login" class="switch-able left">注册帐号</div>
+            </div>
+            <div class="form-box">
+                <div id="form-reg" class="">
+                    <div id="reg-email-box" class="input-wrap">
+                        <span class="input-icon"></span>
+                        <label for="reg-email">邮箱</label>
+                        <input class="form-input" type="text" id="reg-email" name="email"></div>
+                    <div id="reg-name-box" class="input-wrap">
+                        <span class="input-icon"><img src="__PUBLIC__/image/20150129215504.png" /></span>
+                        <label for="reg-name">用户名</label>
+                        <input class="form-input" type="text" id="reg-name" name="name"></div>
+                    <div id="reg-password-box" class="input-wrap">
+                        <span class="input-icon"></span>
+                        <label for="reg-password">密码(6-12位非空字符)</label>
+                        <input class="form-input" type="password" id="reg-password" name="password" ></div>
+                    <div id="reg-password-box" class="input-wrap">
+                        <span class="input-icon"></span>
+                        <label for="reg-repassword">重复密码</label>
+                        <input class="form-input" type="password" id="reg-repassword" name="repassword" ></div>
+                    <div id="reg-submit-box">
+                        <div cloud="" id="ctrlbuttonregsubmit" data-control="regsubmit" class="ui-button skin-button-willblue" style="width: 283px;">
+                            <span class="ui-button-bg-left skin-button-willblue-bg-left"></span>
+                                <div id="ctrlbuttonregsubmitlabel" class="ui-button-label skin-button-willblue-label">
+                                    <span id="ctrlbuttonregsubmittext" class="ui-button-text skin-button-willblue-text">完成注册</span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

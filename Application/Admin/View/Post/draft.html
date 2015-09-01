@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style>
+		.table tr th{text-align: center;}
+		.table tr td{text-align: center;}
+		.trs td form{height: 10px;float: right;}
+		#imgs img{height: 50px}
+		.trs td form button{margin-bottom: 10px;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr class="trs">
+			<td colspan="15" height="30px" align="right">
+			<form action="{:U('ss')}" method="get">
+				<select class="span2" name="lei" id="">
+					<option 
+						<if condition="($lei eq 0)"> selected
+						<else />
+						</if>
+					 value="0">请选择类型</option>
+					<option 
+						<if condition="($lei eq 1)"> selected
+						<else />
+						</if>
+					 value="1">ID</option>
+					<option 
+						<if condition="($lei eq 2)"> selected
+						<else />
+						</if>
+					value="2">Title</option>
+				</select>
+				<input type="text" name="name" placeholder="请输入内容查找" value="{$names}" />
+				<button type="submit" class="btn">搜索</button>
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<th>用户名</th>
+			<th>标题</th>
+			<th>内容</th>
+			<th>点赞</th>
+			<th>浏览量</th>
+			<th>文章分类</th>
+			<th>发表时间</th>
+			<th>编辑时间</th>
+			<th align="center">操作</th>
+		</tr>
+		<foreach name="list" item="val">
+		<tr>
+			<td align="center">{$val.id}</td>
+			<td>{$val.post_author}</td>
+			<td>{$val.title}</td>
+			<td id="imgs">{$val.content}</td>
+			<td>{$val.zan}</td>
+			<td>{$val.view}</td>
+			<td>{$val.term_id}</td>
+			<td>{$val.addtime}</td>
+			<td>{$val.lasttime}</td>
+			<td width="190px" id="action">
+				<a onclick="del({$val[id]},this);" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i>删除</a>
+				<a onclick="edit({$val[id]},this);" class="btn btn-info btn-small"><i class="icon-pencil icon-white"></i>编辑</a>
+				<a href="{$val['url']}" class="btn btn-success btn-small"><i class="icon-zoom-in icon-white"></i>详情</a>
+			</td>
+		</tr>
+		</foreach>
+		<tr>
+			<td colspan="15">{$page}</td>
+		</tr>
+	</table>
+</div>
+</body>
+<script>
+	var box = new BlackBox;
+	function del(id,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				$.post('{:U("del")}',{'id':id},function(message){
+					if(message == '1'){
+						box.alert('删除成功');
+						$(obj).parent().parent().remove();
+					}else{
+						box.alert('删除失败');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+	function edit(id,obj){
+		location.href = '{:U("Admin/Post/edit")}'+'?id='+id;
+	}
+</script>
+</html>

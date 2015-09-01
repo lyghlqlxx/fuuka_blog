@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style>
+		.table tr th{text-align: center;}
+		.table tr td{text-align: center;}
+		.trs td form{height: 10px;float: right;}
+		.trs td form button{margin-bottom: 10px;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr class="trs">
+			<td colspan="15" height="30px" align="right">
+			<form action="{:U('ss')}" method="get">
+				<select class="span2" name="lei" id="">
+					<option 
+						<if condition="($lei eq 0)"> selected
+						<else />
+						</if>
+					 value="0">请选择类型</option>
+					<option 
+						<if condition="($lei eq 1)"> selected
+						<else />
+						</if>
+					 value="1">ID</option>
+					<option 
+						<if condition="($lei eq 2)"> selected
+						<else />
+						</if>
+					value="2">Name</option>
+				</select>
+				<input type="text" name="name" placeholder="请输入内容查找" value="{$names}" />
+				<button type="submit" class="btn">搜索</button>
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<th>PIC</th>
+			<th>用户名</th>
+			<th>昵称</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>邮箱</th>
+			<th>权限</th>
+			<th>状态</th>
+			<th>注册时间</th>
+			<th>最后登录</th>
+			<th align="center">操作</th>
+		</tr>
+		<foreach name="list" item="val">
+		<tr>
+			<td align="center">{$val.id}</td>
+			<td><button class="btn btn-info" onclick="img('{$val['pic']}','{$val['id']}',this)">查看头像</button></td>
+			<td>{$val.username}</td>
+			<td>{$val.name}</td>
+			<td>{$val.sex}</td>
+			<td>{$val.age}</td>
+			<td>{$val.email}</td>
+			<td>{$val.level}</td>
+			<td>
+				<if condition="($val.display eq '已启用')"><span  style="cursor:pointer" onclick="displays({$val[id]},this);" class="label label-success">已启用</span>
+					<else /><span  style="cursor:pointer"  onclick="displays({$val[id]},this);" class="label label-important">已禁用</span>
+				</if>
+			</td>
+			<td>{$val.addtime}</td>
+			<td>{$val.lasttime}</td>
+			<td width="190px" id="action">
+				<a onclick="del({$val[id]},this);" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i>删除</a>
+				<a onclick="edit({$val[id]},this);" class="btn btn-info btn-small"><i class="icon-pencil icon-white"></i>编辑</a>
+				<a href="" class="btn btn-success btn-small"><i class="icon-zoom-in icon-white"></i>详情</a>
+			</td>
+		</tr>
+		</foreach>
+		
+		<tr>
+			<td colspan="15">{$page}</td>
+		</tr>
+	</table>
+</div>
+</body>
+<script>
+/*******************************删除用户******************************************/
+	var box = new BlackBox;
+	function del(id,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				$.post('{:U("del")}',{'id':id},function(message){
+					if(message == '0'){
+						box.alert('删除失败，不能删除超级管理员');
+					}else if(message == '1'){
+						box.alert('删除成功');
+						$(obj).parent().parent().remove();
+					}else if(message == '2'){
+						box.alert('删除失败');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+/*******************************删除用户结束******************************************/
+/*******************************改变状态******************************************/
+
+	var boxs = new BlackBox;
+	function displays(id,dd){
+		boxs.confirm('确认改变状态？',function(data){
+			if(data){
+				$.get('{:U("displays")}',{'id':id},function(message){
+					if(message == 'y'){
+						$(dd).removeClass().addClass("label label-success");
+						$(dd).html('已启用');
+					}else if(message == 'n'){
+						$(dd).removeClass().addClass("label label-important");
+						$(dd).html('已禁用');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'确定'
+		})
+	}
+	/*******************************改变状态结束******************************************/
+
+	function img(tu,id,obj){
+		var image;
+		image = '<img id="img" src="__PUBLIC__/admin/uploads/'+tu+'" height="70" width="70" style="margin-left:140px"><form action="__MODULE__/user/dopic" method="post" enctype="multipart/form-data"><input type="file" name="pic" accept="image/jpeg" id="gtu" style="height:30px" onchange="show()"/><br />&nbsp;<input type="submit" class="btn btn-info" value="更改头像" style="height:47px;font-size:30px;border-radius:8px" /><input type="hidden" name="id" value="'+id+'" /><input type="hidden" name="path" value="./public/admin/uploads/" /></form>';
+		box.alert(image,function(data){
+			if(data){
+				
+			}
+		},{
+			title:'用户头像',
+			value:'确定'
+		})
+
+		
+	}
+		function show(){
+                var file = document.getElementById("gtu").files[0];
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.onload = function(){
+                    document.getElementById("img").src = fileReader.result;
+                }
+            }
+	function edit(id,obj){
+		var user = [];
+		var table;
+		obj = $(obj).parent().parent().find(':first-child');
+		user['id'] = obj.html();
+		user['pic'] = obj.next().html();
+		user['username'] = obj.next().next().html();
+		user['name'] = obj.next().next().next().html();
+		user['sex'] = obj.next().next().next().next().html();
+		user['age'] = obj.next().next().next().next().next().html();
+		user['email'] = obj.next().next().next().next().next().next().html();
+		user['level'] = obj.next().next().next().next().next().next().next().html();
+		user['display'] = obj.next().next().next().next().next().next().next().next().html();
+		table = '<form style="text-align:center" action="{:U("admin/user/edit")}" method="post"  enctype="multipart/form-data"><input type="hidden" value="'+user['id']+'" name="id" />昵称　<input style="width:200px;" type="text" value="'+user['name']+'" name="name"/><br />性别　<select style="width:220px;" name="sex"><option value="0">保密</option><option value="1">男</option><option value="2">女</option></select><br/>年龄　<input value="'+user['age']+'" type="text" style="width:200px" name="age"><br />邮箱　<input style="width:200px;" value="'+user['email']+'" type="email" name="email" /><br/>权限　<select style="width:220px;" name="level"><option value="1">普通用户</option><option value="0">管理员</option></select><br />头像<input style="width:203px;margin-left:17px;" type="file" name="pic" /><br /><input style="width:100px;height:50px;background:rgba(85, 161, 221, 1);font-size:20px;color:white;border-radius:5px;" type="submit" value="更新"/></form>';
+		box.alert(table,function(data){},{
+			title:'编辑用户',
+			value:'取消'
+		});
+	}
+</script>
+</html>

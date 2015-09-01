@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style>
+		.table tr th{text-align: center;}
+		.table tr td{text-align: center;}
+		.trs td form{height: 10px;float: right;}
+		.trs td form button{margin-bottom: 10px;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr class="trs">
+			<td colspan="15" height="30px" align="right">
+			<form action="{:U('ss')}" method="get">
+				<select class="span2" name="lei" id="">
+					<option 
+						<if condition="($lei eq 0)"> selected
+						<else />
+						</if>
+					 value="0">请选择类型</option>
+					<option 
+						<if condition="($lei eq 1)"> selected
+						<else />
+						</if>
+					 value="1">评论人</option>
+					<option 
+						<if condition="($lei eq 2)"> selected
+						<else />
+						</if>
+					value="2">文章标题</option>
+				</select>
+				<input type="text" name="name" placeholder="请输入内容查找" value="{$names}" />
+				<button type="submit" class="btn">搜索</button>
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<th>评论ID</th>
+			<th>评论人</th>
+			<th>文章</th>
+			<th>评论时间<span><a href="{:U('paixu')}">时间降序</a></span></th>
+			<th>评论内容</th>
+			<th align="center">操作</th>
+		</tr>
+		<foreach name="list" item="val">
+		<tr>
+			<td width="77px">{$val.id}</td>
+			<td width="139px">{$val.send_id}</td>
+			<td width="168px">{$val.post_id}</td>
+			<td width="209px">{$val.send_time}</td>
+			<td width="259px">{$val.conmment}</td>
+			<td width="190px" id="action">
+				<a onclick="del({$val[id]},this);" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i>删除</a>
+				<a onclick="xq({$val[id]},this);" class="btn btn-info btn-small"><i class="icon-zoom-in icon-white"></i>内容详情</a>
+			</td>
+		</tr>
+		</foreach>
+		<tr>
+			<td colspan="15">{$page}</td>
+		</tr>
+	</table>
+</div>
+</body>
+<script>
+/*******************************删除用户******************************************/
+	var box = new BlackBox;
+	function del(id,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				$.post('{:U("del")}',{'id':id},function(message){
+					if(message == 1){
+						box.alert('删除成功');
+						$(obj).parent().parent().remove();
+					}else if(message == 2){
+						box.alert('删除失败');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+	function xq(id,obj){
+		var table;
+		obj = $(obj).parent().parent().find(':first-child');
+		user = obj.next().next().next().next().html();
+		table = user;
+		box.alert(table,function(data){},{
+			title:'评论详情',
+			value:'确定'
+		});
+	}
+</script>
+</html>

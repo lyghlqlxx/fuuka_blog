@@ -1,0 +1,426 @@
+/*--tools--*/
+body .hidden{display: none}
+.hide{position:absolute;left: -9999em;width:0;}
+.left{float:left;display: inline;}
+.right{float:right;display: inline;}
+
+
+
+#connect-content{
+    display: none;
+    width:360px;
+    margin: 0 auto;
+}
+
+/*.connect-wrap{
+    margin:80px 0 30px;
+}*/
+
+/*
+.connect-wrap{
+   position:relative;
+   left: -180px;
+   top:-235px;
+}*/
+
+/*--user-info--*/
+.avatar{border-radius: 4px;display:block;}
+.avatar-holder{
+    margin-right:15px;
+    border-radius: 4px;
+    box-shadow:0 1px 3px #999;
+}
+
+.user-name{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #444;
+}
+
+.user-source{
+    font-size: 14px;
+    line-height: 34px;
+    color: #888;
+
+}
+
+/*--connect-form--*/
+.connect-form{
+    margin-top: 40px;
+}
+
+#switchForm{
+    height: 55px;
+}
+
+.switch-form{
+    background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) 0 0px no-repeat;
+}
+
+.switch-form-reg{
+    background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) 0 -55px no-repeat;
+}
+    
+    /*--switch--*/
+    .switchlogin{
+        background-position: 0px -60px;
+    }
+
+    #switch-reg,#switch-login{
+        width: 180px;
+        height:50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 14px;
+        cursor:pointer;
+    }
+
+    .switch-able a{
+        color: #444
+    }
+
+    .switch-disable a{
+        color: #888
+    }
+
+    .form-box{
+        padding:20px 36px 30px ;
+        background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) left bottom no-repeat;
+    }
+
+
+    /*--form--*/
+    .input-wrap {
+    width: 288px;
+    height: 52px;
+    margin-bottom: 3px;
+    background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) no-repeat -400px -52px;
+    position: relative;
+    }
+
+    .form-input{
+        width: 234px;
+        padding:10px;
+        line-height: 32px;
+        height: 32px;
+        background: transparent url(./img_css_third-connect.$7176/blank.$166.png) repeat;
+        border: none;
+        outline: none;
+        font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
+        position: absolute;
+        font-size: 16px;
+        color: #8F8F8F;
+        z-index: 20;
+    }
+
+    .reg-blogurl-input{
+        width:120px;
+    }
+
+    .reg-blogurl-host{
+        color: #AFB0B0;
+        font-size: 16px;
+        margin:15px 15px 0 0 ;
+        font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
+
+    }
+
+
+    .focus{
+        background-position: -400px 0px
+    }
+
+
+    .input-icon{
+        display: block;
+        float: left;
+        width: 16px;
+        height: 16px;
+        background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) no-repeat;
+        margin: 18px 0 0 15px;
+        _margin-left: 8px;
+    }
+
+
+
+    .input-wrap label{
+        position: absolute;
+        width: 240px;
+        height: 52px;
+        margin: 0 10px;
+        line-height: 52px;
+        color: #ABACAD;
+        font-size: 16px;
+        left: 32px;
+        top: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        z-index: 10;
+    }
+
+
+    #reg-email-box .input-icon,#login-email-box .input-icon{
+        background-position:  -400px -249px;
+    }
+
+    #reg-email-box.focus .input-icon,#login-email-box.focus .input-icon{
+        background-position:  -400px -199px;
+    }
+
+    #reg-password-box .input-icon,#login-password-box .input-icon{
+        background-position:  -400px -352px;
+    }
+
+    #reg-password-box.focus .input-icon,#login-password-box.focus .input-icon{
+        background-position:  -400px -302px;
+    }
+
+
+    #reg-blogurl-box .input-icon{
+        background-position:  -400px -452px;
+    }
+
+    #reg-blogurl-box.focus .input-icon{
+        background-position:  -400px -402px;
+    }
+
+
+
+    .form-stage-holder{
+        margin:10px 0 0 2px;
+        color: #8F8F8F; 
+    }
+
+    .form-stage-holder label{
+        margin-right: 20px
+    }
+
+    .form-stage-holder input{
+        margin-right:10px;
+        *margin-right:3px;
+
+    }
+
+    #reg-submit-box,#login-submit-box{
+        margin-top: 25px;
+        font-size: 14px;
+    }
+
+    /*--error--*/
+    .error-tip{
+        width: 228px;
+        padding: 0 20px 0 40px;
+        line-height: 36px;
+        margin-top:10px;
+        height: 40px;
+        background: url(./img_css_third-connect.$7176/third-login-bg.$7129.png) no-repeat -400px -120px;
+        margin-bottom: 20px;
+        color: #69664F;
+        
+    }
+
+    .errorhide{
+        height:0;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
+        opacity: 0;
+    }
+
+
+    .follow-weibo{
+        position:absolute;
+        margin:110px 0 0 -35px;
+        margin:100px 0 0 -35px\0;
+        *margin:90px 0 0 -35px;
+
+    }
+
+    .follow-weibo label{
+        cursor:pointer;
+    }
+    .follow-weibo input{
+        margin-right:7px;
+        *margin-right: 3px;
+    }
+
+    .input-span{
+        position:relative;
+        top:-1px\0;
+        *top:-1px;
+    }
+/*
+body {
+
+	background:#385975;color:#fff;}
+#connect-header, #connect-content {width: 820px;height: auto;margin: 0 auto;text-align:left;}
+
+#connect-header {padding:8px 0 0;height:100px;clear:both;}
+#connect-logo {float:left;}
+#connect-logo a {
+	display:block;
+	overflow:hidden;
+	background:url(./img_css_third-connect.$7176/logo-0928-light.png?rev) 0 0 no-repeat;
+	width:283px;
+	height:44px;
+	text-indent:-9999px;
+}
+#connect-content {position:relative;padding-bottom:20px;}
+#connect-box {width:476px;}
+
+#connect-cover {position:absolute;top:160px;right:10px;}
+#connect-type-cover {
+	width:56px;
+	height:68px;
+	margin-top:12px;
+	float:left;
+	background:url(./img_css_third-connect.$7176/connect-0804-type.png?rev) 0 0 no-repeat;
+	_background-image:url(./img_css_third-connect.$7176/connect-0804-type-ie6.png?rev);
+}
+#connect-cover .douban-cover{background-position:0 0}
+#connect-cover .sina-cover{background-position:0 -68px}
+#connect-cover .kaixin-cover{background-position:0 -136px}
+#connect-cover .qq-cover{background-position:0 -204px}
+#connect-cover .msn-cover{background-position:0 -272px}
+#connect-cover .renren-cover{background-position:0 -340px}
+
+#connect-icon {margin:25px 20px 0;width:70px;height:36px;float:left;display:inline;
+	background:url(./img_css_third-connect.$7176/connect-0804-icon.png?rev) 0 0 no-repeat;
+	_background-image:url(./img_css_third-connect.$7176/connect-0804-icon-ie6.png?rev);
+}
+#connect-diandian-cover {
+	width:115px;height:75px;float:left;
+	background:url(./img_css_third-connect.$7176/connect-0804-diandian-cover.png?rev) 0 0 no-repeat;
+	_background-image:url(./img_css_third-connect.$7176/connect-0804-diandian-cover-ie6.png?rev) ;
+}
+
+#connect-box .user-info {padding:0 0 20px 65px;height:50px;position:relative;}
+.user-info .welcome {line-height:24px;font-size:18px;padding-top:13px;display:block;}
+.user-info .avatar {display:block;position:absolute;left:0;top:0;border:1px solid #333;}
+
+#connect-box .connect-form {
+
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);  
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#19FFFFFF,endColorstr=#19FFFFFF); 
+            zoom: 1;
+
+
+     -moz-border-radius: 10px; 
+  -webkit-border-radius: 10px; 
+          border-radius: 10px; 
+
+	padding:25px 25px 25px 35px;
+}
+.connect-form .switch-form {font-size:18px;margin-bottom:15px;margin-left: -15px;}
+
+.connect-form .form-box {margin:0 0 15px;}
+input{
+	outline: none;
+}
+.form-item {
+    position: relative;
+    _display: inline;
+    _margin-right: 7px;
+    padding:5px 0 15px;
+}
+.form-box .form-item .input-wrapper {
+    background: url(./img_css_third-connect.$7176/conncet-0804-input-bg.png?rev) no-repeat scroll 0 0;
+    border: none;
+    width: 214px;
+    height: 34px;
+    padding: 4px;
+    overflow: hidden;
+    position: relative;
+    zoom:1;
+}
+.form-box .focus .input-wrapper {background-position: 0 -42px;}
+.form-box .error .input-wrapper {background-position: 0 -84px;}
+
+.form-item .form-input {
+    background: transparent;
+    border: none;
+    width: 214px;
+    height: 34px;
+    font-size: 18px;
+    line-height: 34px;
+    cursor: text;
+    color: #324f65;
+    position:absolute;
+    left:4px;
+    top:4px;
+}
+.form-item .form-label {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    *top: 10px;
+    _top: 11px;
+    color: #9dacba;
+    font-size: 18px;
+    cursor: pointer;
+}
+.form-item .form-tip {
+    color: #fff;
+    font-size:12px;
+    height: 22px;
+    line-height: 22px;
+    padding: 4px 8px;
+    position: absolute;
+    left: 220px;
+    top: 12px;
+    overflow: hidden;
+}
+.form-item{
+	_display:block;
+	_height:30px;
+}
+.switch-form label{
+	_zoom:1;
+}
+
+.bind-submit,
+.reg-submit {
+    background-color:"transparent";
+    background-image: url(./img_css_third-connect.$7176/connect-button-0804.png?rev);
+    background-repeat:no-repeat;
+    width:190px;
+    height:40px;
+    border:0;
+    text-indent:-9999px;
+    cursor:pointer;
+    margin:5px 0;
+    padding:0;
+    *display:block;
+}
+
+.bind-submit {background-position:left bottom;}
+.bind-submit-hover {background-position:right bottom;}
+
+.reg-submit {background-position:left top;}
+.reg-submit-hover {background-position:right top;}
+.form-tip{display:none;}
+.form-stage-holder {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.form-stage-holder .input-wrapper {
+	width:218px;
+	overflow:hidden;
+	float:left;
+}
+.form-stage-holder label {
+	margin-right: 6px;
+	_margin-right: 2px;
+}
+.form-stage-holder input {
+	margin-right: 4px;
+	_margin-right: 0px;
+}
+.form-stage-holder .form-tip {
+	float:left;
+	padding: 0 0 0 11px;
+	color:#FF9900;
+	font-size: 12px;
+}*/
+

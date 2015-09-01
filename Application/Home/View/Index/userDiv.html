@@ -1,0 +1,23 @@
+		<div class="login_1">
+			<p class="login0"><a><img width="60" src="__PUBLIC__/admin/uploads/{$userinfo['pic']}"></a></p>
+			<p class="login2" style="color:#fff;">欢迎主人</p>
+			<p class="login3" style="color:#fff;">{$userinfo['username']}</p>
+		</div>
+		<div class="clear"></div>
+		<div class="login_2">
+			<p style="margin-left: 71px;"><img src="__PUBLIC__/home/images/zhuxiao.png"><a href="{:U('Home/User/index')}">仪表盘</a></p>
+			<p style="margin-left: 39px;"><img src="__PUBLIC__/home/images/zhuxiao2.png"><a href="{:U('Home/Post/comment')}">查看评论</a></p>
+			<p style="margin-left: 72px;"><img src="__PUBLIC__/home/images/zhuxiao3.png"><a href="{:U('Home/Post/postlist')}">我的文章</a></p>
+			<p style="margin-left: 29px;"><img src="__PUBLIC__/home/images/zhuxiao4.png"><a href="{:U('Home/Post/add')}">发表文章</a></p>
+		</div>
+		<div class="clear"></div>
+		<div class="login_3">
+			<p style="color:#fff;"><img src="__PUBLIC__/home/images/zhuxiao6.png">您最近发表的几篇文章</p>
+			<foreach name="newpost" item="val">
+			<p><a href="{:U("/Home/Post/index/id/".$val['id'])}">{$val['title']}</a></p>
+			</foreach>
+		</div>
+		<div class="login_4">
+			<p><a style="color:#fff" href="{:U('loginout')}"><h1 style="line-height: 16px;">注销</h1></a></p>
+		</div>
+		<div class="clear"></div>

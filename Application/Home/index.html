@@ -1,0 +1,715 @@
+<!--头部开始-->
+<!DOCTYPE html>
+<html>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>测试又一个WordPress站点</title>
+		<script>
+			window._deel = {name: '测试',url: 'http://localhost/project/wordpress/wp-content/themes/yusi1.0', ajaxpager: '', commenton: 0, roll: [0,0]}
+		</script>
+		<link rel="stylesheet" id="style-css" href="__PUBLIC__/home/css/style.css" type="text/css" media="all">
+
+		<!--幻灯片-->
+		<link type="text/css" href="__PUBLIC__/home/css/hdp_style.css" rel="stylesheet" />
+		<script type="text/javascript" src="__PUBLIC__/home/js/jQuery.1.9.1.js" ></script>
+
+
+		<script type="text/javascript" src="__PUBLIC__/home/js/jquery.min.js"></script>
+		<style type="text/css"></style>
+		<script type="text/javascript" src="__PUBLIC__/home/js/jquery.js"></script>
+
+		<!--登录-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/qiantai.css">
+		<script src="__PUBLIC__/home/js/jquery2.js"></script>
+		<script src="__PUBLIC__/home/js/emailAutoComplete.js"></script>
+	</head>
+<body class="home blog logged-in">
+<header id="header" class="header">
+<div class="container-inner">
+	 <div class="yusi-logo">
+	        <a href="http://localhost/">
+	            <h1>
+	                <span class="yusi-mono">测试</span>
+	                <span class="yusi-bloger">又一个WordPress站点</span>
+ 				</h1>
+	        </a>
+	 </div>
+</div>
+<!--头部结束-->
+
+
+<!--menu菜单导航栏部分-->
+<div id="nav-header" class="navbar fixed">
+		
+		<ul class="nav">
+
+			<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-41">
+				<a href="http://localhost/project/wordpress">首页</a>
+			</li>
+
+			<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7">
+				<a href="http://localhost/project/wordpress/?cat=4">Anime</a>
+			</li>
+
+			<li id="menu-item-8" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8">
+				<a href="http://localhost/project/wordpress/?cat=5">Comic</a>
+			</li>
+
+			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9">
+				<a href="http://localhost/project/wordpress/?cat=2">Galgame</a>
+			</li>
+
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-10">
+				<a href="http://localhost/project/wordpress/?cat=6">WEB开发</a>
+				<ul class="sub-menu">
+					<li id="menu-item-11" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11"><a href="http://localhost/project/wordpress/?cat=8">JavaScript</a></li>
+					<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="http://localhost/project/wordpress/?cat=9">JQuery</a></li>
+				</ul>
+			</li>
+
+			<li id="menu-item-22" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-22">
+				<a href="http://localhost/project/wordpress/?cat=17">编程</a>
+				<ul class="sub-menu">
+					<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="http://localhost/project/wordpress/?cat=7">PHP</a></li>
+					<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a href="http://localhost/project/wordpress/?cat=10">Smarty</a></li>
+					<li id="menu-item-15" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-15"><a href="http://localhost/project/wordpress/?cat=11">ThinkPHP</a></li>
+				</ul>
+			</li>
+
+			<li id="menu-item-16" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16">
+				<a href="http://localhost/project/wordpress/?cat=12">数据库</a>
+				<ul class="sub-menu">
+					<li id="menu-item-17" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-17"><a href="http://localhost/project/wordpress/?cat=13">MySql</a></li>
+					<li id="menu-item-18" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-18"><a href="http://localhost/project/wordpress/?cat=15">Oracle</a></li>
+					<li id="menu-item-19" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19"><a href="http://localhost/project/wordpress/?cat=14">Sqlserver</a></li>
+				</ul>
+			</li>
+
+
+			<li id="menu-item-21" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21">
+				<a href="http://localhost/project/wordpress/?cat=3">脱壳破解</a>
+			</li>
+
+			<li id="menu-item-20" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20">
+				<a href="http://localhost/project/wordpress/?cat=1">未分类</a>
+			</li>
+			
+			<li style="float:right;">
+		        <div class="toggle-search"><a style="width:40px;height:20px;float:left;margin-top:0px;"><img style="margin-top: -8px;"src="__PUBLIC__/home/images/12.png"></a></div>
+				<div class="search-expand" style="display: none;">
+					<div class="search-expand-inner">
+						<form method="get" class="searchform themeform" onsubmit="location.href=&#39;http://localhost/project/wordpress/search/&#39; + encodeURIComponent(this.s.value).replace(/%20/g, &#39;+&#39;); return false;" action="http://localhost/">
+							<div>
+								<input type="ext" class="search" name="s" onblur="if(this.value==&#39;&#39;)this.value=&#39;search...&#39;;" onfocus="if(this.value==&#39;search...&#39;)this.value=&#39;&#39;;" value="search...">
+							</div>
+						</form>
+					</div>
+				</div>
+			</li>
+		</ul>
+			<div class="screen-mini">
+				<button data-type="screen-nav" class="btn btn-inverse screen-nav">
+					<i class="fa fa-list"></i>
+				</button>
+			</div>
+	</div>
+</header>
+
+
+	<!--content主体文章显示区域-->
+<section class="container">
+	<!--最新公告区域-->
+	<div class="speedbar">
+		<a style="float:left;width:50px;height:30px;"><img src="__PUBLIC__/home/images/11.png"></a>
+		 <div style="width:815px;margin-left:20px;">
+            <script language="JavaScript">
+                //设置marquee的宽度 
+                var marqueewidth=400
+                //设置marquee的高度 
+                var marqueeheight=20
+                //设置marquee滚动的速度
+                var speed=6
+                //设置marquee显示内容，使用标准的HTML语法。
+                var marqueecontents='<strong><big><a href=""style="color:#00000">亲 欢迎您的到来！！！</a></big></strong>'
+                document.all
+                document.write('<marquee scrollAmount='+speed+' style="width:'+marqueewidth+'">'+marqueecontents+'</marquee>')
+            </script>
+            </div>
+	</div>
+
+	<!--js幻灯片区域-->
+	<div class="slide banner" data-slide='{"action":"click","fn":"banner_ext","time":"2000"}'>
+		<div class="ban_c album"><a href="#"><img src="__PUBLIC__/home/images/5.png" alt="美国展" /></a></div>
+		<div class="ban_c album"><a href="#"><img src="__PUBLIC__/home/images/6.png" alt="国家科技奖" /></a></div>
+		<div class="ban_c album"><a href="#"><img src="__PUBLIC__/home/images/4.png" alt="网站新精彩" /></a></div>
+	</div>
+	<div class="wrap bann_ext">
+		<ul class="l frontCover"></ul>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/home/js/script.js"></script>
+
+	<!--登录区域-->
+	<div class="denglu">
+				<!-- 主体注册内容 -->
+			<div class="main_right">
+				<form action="http:www.baidu.com/index.php" class="myform" method="post" onsubmit="return submi(this)">
+					<h3 class="h3">
+						<a href="">立即注册</a>
+												登录博客			
+					</h3>
+				
+					<div class="form_list">
+						<p class="form_box">
+							<input class="form_txt" type="text" placeholder="&nbsp;&nbsp;User Name" onblur="names(this)" onfocus="dedao(this)">
+							<span class="msg_err" id="test1" style="display:none;background: url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px;"></span>
+							<span class="user_icon"></span>
+							<div id="msgmobile1" class="msg_error" style="display:none;"><span></span>请填写登录用户名！</div>
+						</p>
+					</div>
+					<div class="form_list">
+						<p class="form_box">
+							<input class="form_txt" type="password" placeholder="&nbsp;&nbsp;Your Password" onblur="pwd(this)" onfocus="dedaos(this)">
+							<span class="msg_err" id="test2" style="display:none;background: url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px;"></span>
+							<span class="pwd_icon"></span>
+							<div id="msgmobile2" class="msg_error" style="display:none;"><span></span>请填写登录密码！</div>
+						</p>
+					</div>
+				
+					<div class="form_sub" style="margin-left: 144px;">
+						<input type="submit" value="立即登录" class="sub">
+					</div>
+					<div style="height:100px;">
+						
+					</div>
+				</form>
+			</div>
+			<script>
+	
+				var inps = document.getElementsByTagName('input');
+				var msgmobile = document.getElementById('msgmobile');
+				var pwdss = document.getElementById('pwdss');
+				var test = document.getElementById('test');
+				var msgmobile1 = document.getElementById('msgmobile1');
+				var test1 = document.getElementById('test1');
+				var msgmobile2 = document.getElementById('msgmobile2');
+				var test2 = document.getElementById('test2');
+				var msgmobile3 = document.getElementById('msgmobile3');
+				var test3 = document.getElementById('test3');
+				var s1 = false;
+				var s2 = false;
+				var s3 = false;
+				var s4 = false;
+				var s5 = false;
+				var s6 = false;
+
+
+				// 验证昵称
+				function names(obj){
+					s2 = false;
+					obj.style.borderColor = '#ddd';
+					msgmobile1.style.display = 'none';
+					test1.style.display = 'none';
+					msgmobile1.innerHTML = '请填写登录用户名！';
+					test1.style.background = 'url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px';
+					var val = obj.value;
+					var	newval = val.trim();
+					var reg = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+					emailp = reg.test(newval);
+					if(!newval){
+						msgmobile1.style.display = 'block';
+						test1.style.display = 'block';
+					}else if(!emailp){
+						msgmobile1.innerHTML = '昵称格式错误,请重新输入哦!';
+						msgmobile1.style.display = 'block';
+						test1.style.display = 'block';
+					}else{
+						test1.style.background = 'url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -50px -25px';
+						test1.style.display = 'block';
+						s2 = true;
+					}
+					// ajax验证昵称
+					$.get('./ajax.php',{name:newval},function(datas){
+						if(datas == 'yes'){
+							msgmobile1.innerHTML = '此昵称已经存在,请重新输入哦!';
+							msgmobile1.style.display = 'block';
+							test1.style.background = 'url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px';
+							test1.style.display = 'block';
+							s6 = true;
+						}
+					});
+				}
+				// 验证密码
+				function pwd(obj){
+					s3 = false;
+					obj.style.borderColor = '#ddd';
+					msgmobile2.style.display = 'none';
+					test2.style.display = 'none';
+					msgmobile2.innerHTML = '请填写登录密码！';
+					test2.style.background = 'url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px';
+					var val = obj.value;
+					newvals = val.trim();
+					var reg = /^[a-zA-Z]\w{5,17}$/;
+					emailp = reg.test(newvals);
+					if(!newvals){
+						msgmobile2.style.display = 'block';
+						test2.style.display = 'block';
+					}else if(!emailp){
+						msgmobile2.innerHTML = '密码格式错误,请以字母开头,长度大于6位!';
+						msgmobile2.style.display = 'block';
+						test2.style.display = 'block';
+					}else{
+						test2.style.background = 'url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -50px -25px';
+						test2.style.display = 'block';
+						s3 = true;
+					}
+				}
+
+			</script>
+			<div class="clear"></div>
+	</div>
+     
+
+   <!--文章区域-->
+    <div class="clear"></div>
+	<div class="content-wrap">
+		<div class="content">
+			<article class="excerpt">
+				<header>
+					<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+					<h2><a target="_blank" href="http://localhost/project/wordpress/?p=46" title="测试。。。。。。。。。。。。">测试。。。。。。。。。。。。 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"></a>
+					</h2>
+				</header>
+
+				<div class="focus">
+					<a target="_blank" href="http://localhost/project/wordpress/?p=46"><img style="width: 200px;" class="thumb" src="__PUBLIC__/home/post/images/1.png" alt="测试。。。。。。。。。。。。">
+					</a>
+				</div>
+
+				<span class="note"> &nbsp;
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						转载请注明：测试 » 测试。。。。。。。。。。。。...
+				</span>
+
+				<p class="auth-span">
+					<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+					<span class="muted"><i class="fa fa-clock-o"></i> 3分钟前</span>
+					<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+					<span class="muted"><i class="fa fa-comments-o"></i>
+						<a target="_blank" href="http://localhost/project/wordpress/?p=46#comments">0评论</a>
+					</span>
+					<span class="muted">
+						<a href="javascript:;" data-action="ding" data-id="46" id="Addlike" class="action"><i class="fa fa-heart-o"></i>
+						<span class="count">0</span>喜欢</a>
+					</span>
+				</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header><a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+						<h2>
+							<a target="_blank" href="http://localhost/project/wordpress/?p=44" title="测试。。。。。。。。。。。。">测试。。。。。。。。。。。。 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"> </a>
+						</h2>
+					</header>
+
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=44">
+							<img style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/2.png" alt="测试。。。。。。。。。。。。">
+						</a>
+					</div>
+				<span class="note"> &nbsp;
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						测试。。。。。。。。。。。。
+						&nbsp;
+						转载请注明：测试 » 测试。。。。。。。。。。。。...
+				</span>
+				<p class="auth-span">
+					<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+					<span class="muted"><i class="fa fa-clock-o"></i> 4分钟前</span>
+					<span class="muted"><i class="fa fa-eye"></i> 0℃</span>	
+					<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=44#comments">0评论</a></span>
+					<span class="muted">
+						<a href="javascript:;" data-action="ding" data-id="44" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+					</span>
+				</p>
+			</article>
+
+			<article class="excerpt">
+				<header><a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a><h2><a target="_blank" href="http://localhost/project/wordpress/?p=42" title="测试。。。。。。。。。。。。">测试。。。。。。。。。。。。 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"> </a></h2>
+				</header>
+				<div class="focus">
+					<a target="_blank" href="http://localhost/project/wordpress/?p=42">
+						<img style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/3.png" alt="测试。。。。。。。。。。。。">
+					</a>
+				</div>
+				<span class="note"> 
+							测试。。。。。。。。。。。。
+							测试。。。。。。。。。。。。
+							测试。。。。。。。。。。。。
+							测试。。。。。。。。。。。。
+							测试。。。。。。。。。。。。
+							转载请注明：测试 » 测试。。。。。。。。。。。。...
+				</span>
+				<p class="auth-span">
+					<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+					<span class="muted"><i class="fa fa-clock-o"></i> 4分钟前</span>
+					<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+					<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=42#comments">0评论</a></span>
+					<span class="muted">
+						<a href="javascript:;" data-action="ding" data-id="42" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+					</span>
+				</p>
+			</article>
+			
+			<article class="excerpt">
+				<header>
+					<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+					<h2><a target="_blank" href="http://localhost/project/wordpress/?p=39" title="此篇为测试文章">此篇为测试文章 
+						<img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"> 
+						</a>
+					</h2>
+				</header>
+				<div class="focus">
+					<a target="_blank" href="http://localhost/project/wordpress/?p=39"><img style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/5.png" alt="此篇为测试文章">
+					</a>
+				</div>
+				<span class="note"> 此篇为测试文章
+						此篇为测试文章
+						此篇为测试文章
+						此篇为测试文章
+						此篇为测试文章
+						此篇为测试文章
+						&nbsp;
+						转载请注明：测试 » 此篇为测试文章...
+				</span>
+				<p class="auth-span">
+					<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+					<span class="muted"><i class="fa fa-clock-o"></i> 11分钟前</span>
+					<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+					<span class="muted"><i class="fa fa-comments-o"></i> 
+						<a target="_blank" href="http://localhost/project/wordpress/?p=39#comments">0评论</a>
+					</span>
+					<span class="muted">
+						<a href="javascript:;" data-action="ding" data-id="39" id="Addlike" class="action"><i class="fa fa-heart-o"></i>
+						<span class="count">0</span>喜欢</a>
+					</span>
+				</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i>
+						</a>
+						<h2><a target="_blank" href="http://localhost/project/wordpress/?p=37" title="此篇为测试文章">此篇为测试文章 
+							<img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"></a>
+						</h2>
+					</header>
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=37"><img style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/4.png" alt="此篇为测试文章">
+						</a>
+					</div>
+					<span class="note"> 此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							转载请注明：测试 » 此篇为测试文章...
+					</span>
+					<p class="auth-span">
+						<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+						<span class="muted"><i class="fa fa-clock-o"></i> 12分钟前</span>
+						<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+						<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=37#comments">0评论</a></span>
+						<span class="muted">
+							<a href="javascript:;" data-action="ding" data-id="37" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+						</span>
+					</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i>
+						</a>
+						<h2>
+							<a target="_blank" href="http://localhost/project/wordpress/?p=35" title="此篇为测试文章">此篇为测试文章 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新">
+							</a>
+						</h2>
+					</header>
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=35">
+							<img style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/6.png" alt="此篇为测试文章">
+						</a>
+					</div>
+					<span class="note"> 此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							转载请注明：测试 » 此篇为测试文章...
+					</span>
+					<p class="auth-span">
+						<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+						<span class="muted"><i class="fa fa-clock-o"></i> 12分钟前</span>
+						<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+						<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=35#comments">0评论</a></span>
+						<span class="muted">
+							<a href="javascript:;" data-action="ding" data-id="35" id="Addlike" class="action"><i class="fa fa-heart-o"></i>
+							<span class="count">0</span>喜欢</a>
+						</span>
+					</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i>
+						</a>
+						<h2>
+							<a target="_blank" href="http://localhost/project/wordpress/?p=32" title="此篇为测试文章">此篇为测试文章 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"> </a>
+						</h2>
+					</header>
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=32"><img  style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/7.png" alt="此篇为测试文章">
+						</a>
+					</div>
+					<span class="note"> 此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							转载请注明：测试 » 此篇为测试文章...
+					</span>
+					<p class="auth-span">
+							<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+							<span class="muted"><i class="fa fa-clock-o"></i> 12分钟前</span>
+							<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+							<span class="muted"><i class="fa fa-comments-o"></i> 
+								<a target="_blank" href="http://localhost/project/wordpress/?p=32#comments">0评论</a>
+							</span>
+							<span class="muted">
+								<a href="javascript:;" data-action="ding" data-id="32" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+							</span>
+					</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+						<h2><a target="_blank" href="http://localhost/project/wordpress/?p=30" title="此篇为测试文章">此篇为测试文章 <img src="__PUBLIC__/home/post/images/new.gif" alt="24小时内最新"> </a>
+						</h2>
+					</header>
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=30">
+						<img class="thumb"  style="width: 200px;height: 150px;"src="__PUBLIC__/home/post/images/8.png" alt="此篇为测试文章">
+						</a>
+					</div>
+					<span class="note"> 此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							此篇为测试文章
+							转载请注明：测试 » 此篇为测试文章...
+					</span>
+					<p class="auth-span">
+							<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+							<span class="muted"><i class="fa fa-clock-o"></i> 13分钟前</span>
+							<span class="muted"><i class="fa fa-eye"></i> 0℃</span>
+							<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=30#comments">0评论</a></span>
+							<span class="muted">
+								<a href="javascript:;" data-action="ding" data-id="30" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+							</span>
+					</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+						<h2>
+						<a target="_blank" href="http://localhost/project/wordpress/?p=25" title="dsdsdsdsd">dsdsdsdsd  </a>
+						</h2>
+					</header>
+					<div class="focus">
+						<a target="_blank" href="http://localhost/project/wordpress/?p=25"><img  style="width: 200px;height: 150px;"class="thumb" src="__PUBLIC__/home/post/images/10.png" alt="dsdsdsdsd"></a>
+					</div>
+					<span class="note"> sdsdsdsdsd转载请注明：测试 » dsdsdsdsd...</span>
+					<p class="auth-span">
+							<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+							<span class="muted"><i class="fa fa-clock-o"></i> 1天前</span>
+							<span class="muted"><i class="fa fa-eye"></i> 5℃</span>
+							<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=25#comments">0评论</a></span>
+							<span class="muted">
+								<a href="javascript:;" data-action="ding" data-id="25" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+							</span>
+					</p>
+			</article>
+
+
+			<article class="excerpt">
+					<header>
+						<a class="label label-important" href="http://localhost/project/wordpress/?cat=1">未分类<i class="label-arrow"></i></a>
+						<h2><a target="_blank" href="http://localhost/project/wordpress/?p=5" title="此篇为测试文章">此篇为测试文章  </a></h2>
+					</header>
+					<div class="focus"><a target="_blank" href="http://localhost/project/wordpress/?p=5">
+						<img class="thumb"  style="width: 200px;height: 150px;"src="__PUBLIC__/home/post/images/9.png" alt="此篇为测试文章"></a>
+					</div>
+					<span class="note"> 测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							测试的内容
+							转载请注明：测试 » 此篇为测试文章...
+					</span>
+					<p class="auth-span">
+							<span class="muted"><i class="fa fa-user"></i> <a href="http://localhost/project/wordpress/?author=1">admin</a></span>
+							<span class="muted"><i class="fa fa-clock-o"></i> 1天前</span>
+							<span class="muted"><i class="fa fa-eye"></i> 8℃</span>
+							<span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="http://localhost/project/wordpress/?p=5#comments">0评论</a></span>
+							<span class="muted">
+								<a href="javascript:;" data-action="ding" data-id="5" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>喜欢</a>
+							</span>
+					</p>
+			</article>
+			<div class="pagination">
+				<ul>
+					<li class="prev-page"></li>
+					<li class="active"><span>1</span></li>
+					<li><a href="http://localhost/project/wordpress/?paged=2">2</a></li>
+					<li class="next-page"><a href="http://localhost/project/wordpress/?paged=2">下一页</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--右边部分-->	
+		<aside class="sidebar">	
+			<div class="widget widget_text">
+				<div class="textwidget">
+					<div class="social"></div>
+				</div>
+			</div>
+
+
+			<div class="widget widget_recent_entries">
+				<div class="title"><h2>近期文章</h2></div>
+					<ul>ss
+						<li>
+							<a href="http://localhost/project/wordpress/?p=46">测试。。。。。。。。。。。。</a>
+						</li>
+						<li>
+							<a href="http://localhost/project/wordpress/?p=44">测试。。。。。。。。。。。。</a>
+						</li>
+						<li>
+							<a href="http://localhost/project/wordpress/?p=42">测试。。。。。。。。。。。。</a>
+						</li>
+						<li>
+							<a href="http://localhost/project/wordpress/?p=39">此篇为测试文章</a>
+						</li>
+						<li>
+							<a href="http://localhost/project/wordpress/?p=37">此篇为测试文章</a>
+						</li>
+					</ul>
+			</div>
+			<div class="widget widget_archive">
+				<div class="title"><h2>文章归档</h2></div>
+					<ul>
+						<li><a href="http://localhost/project/wordpress/?m=201501">2015年一月</a></li>
+					</ul>
+			</div>
+			<div class="widget widget_categories">
+				<div class="title"><h2>分类目录</h2></div>
+					<ul>
+						<li class="cat-item cat-item-1"><a href="http://localhost/project/wordpress/?cat=1">未分类</a></li>
+					</ul>
+			</div>
+			<div class="widget d_tag">
+				<div class="title">
+					<h2>
+						
+					</h2>
+				</div>
+				<div class="d_tags">暂无标签！</div>
+			</div>
+			<div class="widget d_comment">
+				<div class="title">
+					<h2>
+						
+					</h2>
+				</div>
+				<ul></ul>
+			</div>
+			<div class="widget d_subscribe">
+				<div class="title">
+					<h2>邮件订阅</h2>
+				</div>
+				<form action="http://list.qq.com/cgi-bin/qf_compose_send" target="_blank" method="post">
+					<p>订阅精彩内容</p>
+					<input type="hidden" name="t" value="qf_booked_feedback">
+					<input type="hidden" name="id" value="">
+					<input type="email" name="to" class="rsstxt" placeholder="your@email.com" value="" required="">
+					<input type="submit" class="rssbutton" value="订阅">
+				</form>
+			</div>
+			<div class="widget widget_meta">
+				<div class="title">
+					<h2>功能</h2>
+				</div>
+					<ul>
+						<li><a href="http://localhost/project/wordpress/wp-admin/">管理站点</a></li>
+						<li><a href="http://localhost/project/wordpress/wp-login.php?action=logout&_wpnonce=4da7b1490a">登出</a></li>
+						<li><a href="http://localhost/project/wordpress/?feed=rss2">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+						<li><a href="http://localhost/project/wordpress/?feed=comments-rss2">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+						<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>
+					</ul>
+
+			</div>
+
+			<div class="widgetRoller" style="position: fixed; top: 10px; z-index: 0; width: 360px; display: block;">
+				<div class="widget widget_meta">
+					<div class="title">
+						<h2>功能</h2>
+					</div>
+						<ul>
+							<li><a href="http://localhost/project/wordpress/wp-admin/">管理站点</a></li>
+							<li><a href="http://localhost/project/wordpress/wp-login.php?action=logout&_wpnonce=4da7b1490a">登出</a></li>
+							<li><a href="http://localhost/project/wordpress/?feed=rss2">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+							<li><a href="http://localhost/project/wordpress/?feed=comments-rss2">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+							<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			
+						</ul>
+				</div>
+			</div>
+		</aside>
+</section>
+		<!--底部部分-->
+		<footer class="footer">
+				    <div class="footer-inner">
+				        <div class="copyright pull-left">
+					         <a href="http://yusi123.com/" title="欲思博客">欲思博客</a> 版权所有，保留一切权利 · 
+					         <a href="http://yusi123.com/sitemap.xml" title="站点地图">站点地图</a>   ·   基于WordPress构建   © 2011-2014  ·   托管于 
+					         <a rel="nofollow" target="_blank" href="http://yusi123.com/go/aliyun">阿里云主机</a> &amp; 
+					         <a rel="nofollow" target="_blank" href="http://yusi123.com/go/qiniu">七牛云存储</a>
+				        </div>
+				        <div class="trackcode pull-right"></div>
+				    </div>
+		</footer>
+
+		<div class="rollto" style="">
+			<button class="btn btn-inverse" data-type="totop" title="回顶部">
+				<a style="float:left"><img src="./images/13.png"></a>
+			</button>
+		</div>
+	</body>
+</html>

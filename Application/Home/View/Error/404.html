@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://localhost/project/wordpress/?p=999999 -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>未找到页面</title>
+		<script>
+			window._deel = {name: '测试',url: 'http://localhost/project/wordpress/wp-content/themes/yusi1.0', ajaxpager: '', commenton: 0, roll: [0,0]}
+		</script>
+		<link rel="stylesheet" id="style-css" href="__PUBLIC__/style.css" type="text/css" media="all">
+		<script type="text/javascript" src="__PUBLIC__/jquery.min.js"></script><style type="text/css"></style>
+		<script type="text/javascript" src="__PUBLIC__/jquery.js"></script>
+	</head>
+	<body class="error404">
+		<header id="header" class="header">
+			<div class="container-inner">
+ 				<div class="yusi-logo">
+            		<a href="http://localhost/">
+                		<h1>
+                  			<span class="yusi-mono">测试系统</span>
+                  			<span class="yusi-bloger">。。。。。。</span>
+                		</h1>
+                	</a>
+    			</div>
+			</div>
+			<div id="nav-header" class="navbar">
+				<ul class="nav">
+					<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-41">
+				<a href="{:U('Index/index')}">首页</a>
+			</li>
+			<foreach name="list" item="val">
+			<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7">
+				<a <if condition="$val.id eq 8">href="{:U('Index/index?sid='.$val['id'])}"<else/>href="{:U('Index/index?lid='.$val['id'])}"</if>>{$val.name}</a>
+				<ul class="sub-menu">
+					<foreach name="val.son" key="k" item="son">
+					<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="{:U('Index/index?sid='.$k)}">{$son}</a></li>
+					</foreach>
+				</ul>
+			</li>
+			</foreach>
+					<li style="float:right;">
+                    	<div class="toggle-search"><i class="fa fa-search"></i></div>
+						<div class="search-expand" style="display: none;">
+							<div class="search-expand-inner">
+								<form method="get" class="searchform themeform" onsubmit="location.href=&#39;http://localhost/project/wordpress/search/&#39; + encodeURIComponent(this.s.value).replace(/%20/g, &#39;+&#39;); return false;" action="http://localhost/">
+									<div>
+										<input type="ext" class="search" name="s" onblur="if(this.value==&#39;&#39;)this.value=&#39;search...&#39;;" onfocus="if(this.value==&#39;search...&#39;)this.value=&#39;&#39;;" value="search...">
+									</div>
+								</form>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="screen-mini">
+					<button data-type="screen-nav" class="btn btn-inverse screen-nav"><i class="fa fa-list"></i></button>
+				</div>
+			</div>
+		</header>
+		<section class="container">
+			<div class="speedbar">
+				<div class="toptip">
+					<strong class="text-success">
+						<i class="fa fa-volume-up"></i> 
+					</strong> 
+				</div>
+			</div>
+			<div class="content-wrap">
+				<div style="text-align:center;padding:10px 0;font-size:16px;background-color:#ffffff;">
+					<h2 style="font-size:36px;margin-bottom:10px;">哎哟～404了～休息一下，玩个游戏吧！</h2>
+  					<embed type="application/x-shockwave-flash" width="600" height="400" src="__PUBLIC__/zhuamao.swf" wmode="transparent" quality="high" scale="noborder" flashvars="width=600&amp;height=400" allowscriptaccess="sameDomain" align="L"><br />
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+    		<div class="footer-inner">
+        		<div class="copyright pull-left">
+        			<a rel="nofollow" target="_blank" href="http://yusi123.com/go/aliyun">阿里云主机</a> &amp; 
+        			<a rel="nofollow" target="_blank" href="http://yusi123.com/go/qiniu">七牛云存储</a>
+        		</div>
+        		<div class="trackcode pull-right">
+        		</div>
+    		</div>
+		</footer>
+		<div class="rollto">
+			<button class="btn btn-inverse" data-type="totop" title="回顶部">
+				<i class="fa fa-arrow-up"></i>
+			</button>
+		</div>
+	</body>
+</html>

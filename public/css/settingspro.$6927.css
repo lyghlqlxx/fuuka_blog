@@ -1,0 +1,373 @@
+body {
+  padding-bottom: 20px;
+}
+.input-text {
+  width: 350px;
+}
+textarea.input-text {
+  height: 130px;
+}
+#setting-myprofile-btn {
+  background: #435e7a url(./img_css_settingspro.$6927/blue_button_bg.$1293.png) repeat-x 50% 100%;
+  border-bottom: 1px solid #060c11;
+  border-right: 1px solid #080F15;
+  color: #FFF;
+  padding: 7px 15px 8px;
+  font-size: 18px;
+  line-height: normal;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+}
+#setting-myprofile-btn:active {
+  background-image: none;
+}
+.setting-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border: 1px solid #C6C8CB;
+  border-bottom: none;
+  box-shadow: inset 0 0 1px #dddfe1;
+  background: url(./img_css_settingspro.$6927/sidemenu-item.$5106.png) repeat;
+  height: 30px;
+  padding: 10px 0;
+  line-height: 30px;
+  padding-left: 38px;
+  position: relative;
+  zoom: 1;
+}
+#setting-goto-btn {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+}
+#setting-goto-btn .skin-button-willblue-mid-icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 12px;
+  width: 13px;
+  height: 30px;
+  background: url(./img_css_settingspro.$6927/setting-blog-goback.$5734.png) no-repeat;
+}
+#setting-goto-btn .skin-button-willblue-mid-hover .skin-button-willblue-mid-icon {
+  background-position: 0 -32px;
+}
+#setting-goto-btn .skin-button-willblue-mid-press .skin-button-willblue-mid-icon {
+  background-position: 0 -64px;
+}
+#setting-goto-btn .skin-button-willblue-mid-text {
+  padding-right: 10px;
+}
+.setting-header h2 {
+  float: left;
+  font-size: 16px;
+  color: #0f3d5e;
+  background: url(./img_css_settingspro.$6927/dianlog-sprite.$6393.png) no-repeat 0 -173px;
+  padding-left: 25px;
+  font-weight: normal;
+}
+.setting-rm-account .setting-header h2 {
+  background: url(./img_css_settingspro.$6927/rm-account.$5153.png) no-repeat 0 13px;
+}
+.editor-faq .setting-header h2,
+.editor-submit .setting-header h2 {
+  background: url(./img_css_settingspro.$6927/dianlog-sprite.$6393.png) no-repeat 0 -324px;
+}
+.setting-header a {
+  float: right;
+  display: inline;
+}
+.setting-tips {
+  clear: both;
+  padding-top: 3px;
+  color: #999;
+}
+#setting-holder {
+  background: #F6F6F6;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #aeb1b5;
+  padding-top: 20px;
+  margin-top: -5px;
+  box-shadow: 0 2px 2px rgba(173, 176, 179, 0.8);
+  position: relative;
+  z-index: 1;
+}
+.setting-header .ex-link {
+  text-decoration: underline;
+  color: #A5A6A8;
+  margin-right: 38px;
+}
+.setting-header .ex-link:hover {
+  color: #848586;
+}
+.setting-item {
+  border-bottom: 1px solid #e1e1e1;
+  clear: both;
+  padding: 18px 0;
+}
+.setting-item .setting-item-option {
+  margin-top: 6px;
+}
+.setting-item input.disabled {
+  background: #EEE;
+  cursor: default;
+}
+.setting-item label {
+  width: 100px;
+  color: #444;
+  margin-right: 20px;
+  display: inline;
+  text-align: right;
+  display: block;
+  float: left;
+  font-size: 12px;
+  line-height: 38px;
+}
+.setting-item-main {
+  margin-left: 120px;
+}
+.setting-item-main label.label-for-checkbox,
+.setting-item-main label.label-for-radio {
+  padding: 0;
+  text-align: left;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 20px;
+  cursor: pointer;
+}
+#setting-avatar img {
+  width: 64px;
+  height: 64px;
+  float: left;
+  margin-right: 10px;
+}
+#setting-avatar a {
+  display: block;
+  outline: none;
+  padding-bottom: 5px;
+}
+#upload-tip {
+  color: #666;
+  display: block;
+  height: 20px;
+}
+#upload-flash-holder {
+  height: 20px;
+}
+#change-avatar-thumb {
+  width: 140px;
+}
+#setting-email {
+  border-top: none;
+}
+#setting-email .setting-item-main {
+  line-height: 38px;
+}
+#setting-feed .setting-item-main {
+  height: 20px;
+  padding: 10px 0;
+}
+#setting-feed .label-for-checkbox {
+  float: none;
+  width: 160px;
+}
+#setting-feed .paging-feed {
+  padding-top: 10px;
+}
+#setting-feed .paging-feed .label-for-checkbox {
+  float: left;
+}
+#setting-notify .label-notify {
+  font-size: 14px;
+  font-weight: normal;
+  width: auto;
+  cursor: pointer;
+  color: #666;
+}
+.setting-success {
+  background: url(./img_css_settingspro.$6927/setting-success.$6498.png) 0 3px no-repeat scroll;
+  padding-left: 21px;
+  margin-left: 40px;
+  height: 20px;
+  line-height: 20px;
+  color: #afafaf;
+}
+.setting-error-msg {
+  background: url(./img_css_settingspro.$6927/error-tip.$6292.png) 0 0 no-repeat scroll;
+  width: 340px;
+  height: 36px;
+  line-height: 36px;
+  position: absolute;
+  top: 0px;
+  color: #8F8856;
+  padding-left: 35px;
+  left: 120px;
+}
+#setting-pw input,
+#setting-newpw input {
+  width: 250px;
+}
+#setting-newpw .new-password {
+  margin-bottom: 10px;
+}
+#repw {
+  margin-top: 10px;
+}
+.error_msg {
+  color: red;
+}
+.setting-bottom-nav {
+  text-align: left;
+  height: 50px;
+  padding: 0 50px 10px;
+  line-height: 50px;
+}
+.setting-bottom-nav span {
+  color: #B4B4B4;
+  margin: 0 -3px 0 -12px;
+}
+.setting-bottom-nav a {
+  color: #b4b4b4;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.setting-bottom-nav a:hover {
+  color: #8f8f8f;
+}
+.setting-submit {
+  position: absolute;
+  bottom: 20px;
+  right: 16px;
+}
+#setting-apps {
+  padding-bottom: 15px;
+}
+#setting-apps .setting-item-main {
+  padding-top: 10px;
+}
+#setting-apps .thumbnail {
+  float: left;
+  width: 55px;
+  display: inline;
+  margin-right: 20px;
+}
+#setting-apps .thumbnail img {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  width: 55px;
+  height: 55px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+#setting-apps .info {
+  padding-left: 75px;
+}
+#setting-apps .info h3 {
+  font-weight: normal;
+  font-size: 14px;
+}
+#setting-apps .info a {
+  color: #0f3d5e;
+}
+#setting-apps .info a:hover {
+  text-decoration: underline;
+}
+#setting-apps .info .detail {
+  line-height: 20px;
+  min-height: 20px;
+}
+#setting-apps .list {
+  margin-bottom: 10px;
+}
+#setting-lang {
+  border-bottom: none;
+}
+#setting-mail .setting-item-main,
+#setting-lang .setting-item-main,
+#setting-notify .setting-item-main,
+#setting-editor .setting-item-main {
+  padding-top: 10px;
+  float: left;
+  margin-left: 0;
+  width: 630px;
+}
+#setting-notify .setting-item-main {
+  padding-top: 5px;
+}
+#setting-mail .setting-item-main input,
+#setting-notify .setting-item-main input {
+  float: left;
+  margin: 5px 5px 0 0;
+  *margin-top: 0;
+}
+#setting-mail .setting-item-main span,
+#setting-notify .setting-item-main span {
+  float: left;
+}
+#change-email,
+#change-password,
+#markdown-help a {
+  color: #B4B4B4;
+  margin-left: 20px;
+}
+#change-email:hover,
+#change-password:hover,
+#markdown-help a:hover {
+  color: #8f8f8f;
+}
+#markdown-help {
+  color: #B4B4B4;
+}
+#markdown-help a {
+  margin-left: 0;
+}
+.change-mail-item {
+  padding-bottom: 10px;
+}
+.change-mail-item .setting-item-main {
+  line-height: 38px;
+}
+#change-mail-form,
+#change-password-form {
+  padding-bottom: 30px;
+}
+#change-mail-form .setting-item,
+#change-password-form .setting-item {
+  border-bottom: none;
+}
+.setting-item-tips {
+  clear: both;
+  color: #afafaf;
+  padding-top: 10px;
+}
+.one-blog-setting {
+  clear: both;
+  padding: 5px 0;
+}
+.one-blog-setting-item {
+  float: left;
+}
+.one-blog-setting-item .label-for-checkbox {
+  width: 100px;
+}
+.one-blog-setting h5 {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  width: 60px;
+  margin-right: 15px;
+  overflow: hidden;
+  font-weight: normal;
+}
+#setting-editor label.label-for-radio {
+  width: 130px;
+}
+#setting-mail .label-for-checkbox-last {
+  width: 120px;
+}

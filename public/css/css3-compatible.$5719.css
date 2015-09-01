@@ -1,0 +1,28 @@
+/* For Publisher {{{ */
+.publisher .pb-avatar a.blog-avatar {
+	border-bottom: 1px solid #a7a8ad;
+}
+.publisher .pb-avatar a.author-avatar {
+	border: 3px solid #d3d9de;
+}
+.publisher .pb-avatar a.author-avatar span {
+	border-bottom: 1px solid #a7a8ad;
+}
+/* }}} */
+
+/* For Feed {{{ */
+.feed .feed-avatar a.blog-avatar {
+	border-bottom: 1px solid #a7a8ad;
+}
+.feed .feed-avatar a.author-avatar {
+	border: 3px solid #d3d9de;
+}
+.feed .feed-avatar a.author-avatar span {
+	border-bottom:1px solid #a7a8ad;
+}
+/* }}} */
+/* For Guide {{{ */
+.blog-guide{
+	background-image:url(./img_css_css3-compatible.$5719/blog-guide-ie.$5719.png) !important;
+}
+/* }}} */

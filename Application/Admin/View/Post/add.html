@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/UE/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/UE/ueditor.all.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style type="text/css">
+		*{font-family:"Microsoft YaHei" !important;}
+		#ueditor{height:500px;}
+		#status div{margin-top: 10px;}
+	</style>
+</head>
+<body style="background-image:url(__PUBLIC__/admin/images/bg-controls.png);">
+	<div style="padding:30px;">
+		<h3>撰写新文章</h3>
+		<div id="box" style="width:80%;float:left;">
+			<input style="height:30px;width:99%" type="text" name="title" id="title" autofocus placeholder="在此输入标题" onblur="checkTitle(this);" />
+			<script id="ueditor" type="text/plain"  name="ueditor" ></script>
+		</div>
+		<div style="width:16%;height:200px;background-color:#fff;float:right;border-radius:8px;border:1px solid #e5e5e5;">
+			<div style="padding:8px 12px;border-bottom:1px solid #ccc">发布</div>
+			<div style="padding:10px 10px 0">
+				<button onclick="send(0)" style="padding:3px 10px;">保存草稿</button>
+				<button style="padding:3px 10px;float:right">预览</button>
+			</div>
+			<div id="status" style="padding:10px 10px 0">
+				<div>　状态： 草稿</div>
+				<div>公开度： 公开</div>
+			</div>
+			<div style="background-color:#f1f1f1;width:93%;height:25px;border-radius:5px;border:1px solid #ccc;margin-top:30px;padding:10px;">
+				<a href="" style="text-decoration:none;color:#a00;">移动至回收站</a>
+				<button onclick="send(1);" style="padding:5px 10px;background-color:#2ea2cc;border:1px solid #0074a2;border-radius:5px;color:#fff;float:right;">发布</button>
+			</div>
+		</div>
+		<div style="width:16%;height:370px;background-color:#fff;float:right;border-radius:8px;border:1px solid #e5e5e5;margin-top:50px;">
+			<div style="padding:8px 12px;border-bottom:1px solid #ccc">分类目录</div>
+			<div style="overflow:auto;height:300px" id="cate">
+				<foreach name="cate" item="val">
+				<ul style="list-style:none;">
+					<li style="margin-bottom:5px;">{$val.name}</li>
+					<foreach name="val['son']" key="key" item="son">
+					<li style="margin-bottom:3px;">　<input type="radio" name="categroy" value="{$key}" style="width:18px;height:18px;margin-top:-3px;" /> {$son}</li>
+					</foreach>
+				</ul>
+				</foreach>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<script>
+	var box = new BlackBox;
+	var titleMask = false;
+	var contentsMask = false;
+	var ue = UE.getEditor('ueditor');
+	window.onresize = function(){
+		var boxWidth = $('#box').width();
+		var boxHeight = $('#box').height();
+		$('#edui1').css('width',boxWidth);
+	}
+	function send(type){
+		var title = document.getElementById('title');
+		var cid
+		title.onblur();
+		if(ue.hasContents()){
+			contentsMask = true;
+		}else{
+			box.alert('无法发表空文章');
+			contentsMask = false;
+		}
+		if(titleMask){
+			titleMask = true;
+		}else{
+			box.alert('请输入标题');
+			titleMask = false;
+		}
+		if((cid = getchecked()) == undefined) cid = 8;
+		if(titleMask && contentsMask){
+			$.post('{:U("doadd")}',{'title':title.value,'content':ue.getContent(),'plain_text':ue.getContentTxt(),'term_id':cid,'display':type},function(message){
+				if(message == '1'){
+					box.alert('发布成功');
+				}else{
+					box.alert('发布失败');
+				}
+			});
+		}
+		
+	}
+	function checkTitle(obj){
+		if(obj.value.length == 0){
+			$(obj).css('box-shadow','0 0 10px red');
+			titleMask = false;
+		}else{
+			$(obj).css('box-shadow','');
+			titleMask = true;
+		}
+	}
+	function getchecked(){
+		var cate = document.getElementById('cate');
+		var input = cate.getElementsByTagName('input');
+		var cid; // 要换成多选时 把cid定义成数组 并用push追加6
+		for(var i=0;i<input.length;i++){
+			if(input[i].checked){
+				cid = input[i].value;
+			}
+		}
+		return cid;
+	}
+</script>
+</html>

@@ -1,0 +1,127 @@
+<div class="main_right">
+				
+				<form action="{:U('Home/Index/denglu')}" class="myform" method="post" onsubmit="return submi(this)">
+					<h3 class="h3">
+						<a href="__APP__/home/login/login">立即注册</a>
+                        <font style="margin-left:0px;">登录博客</font>			
+                    </h3>
+                 
+                 	<div class="form_list">
+						<p class="form_box fuemail">
+							<input class="form_txt emails" type="text" placeholder="邮箱" name="mail" onblur="email(this)" onfocus="dedao(this)">
+							<span class="msg_err" id="test"  style="display:none;background: url("__PUBLIC__/home/post/images/login_icon-4.png") no-repeat -25px -25px;"></span>
+							<span class="user_icon"></span>
+							<div id="msgmobile" class="msg_error" style="display:none;margin-top: -15px;margin-left: 50px;"><span></span>你还没有填写邮箱哦。</div>
+						</p>
+					</div>
+
+          
+                    <div class="form_list">
+						<p class="form_box">
+							<input class="form_txt" type="password" placeholder="密码" name="password" onblur="pwd(this)" onfocus="dedaos(this)">
+							<span class="msg_err" id="test2" style="display:none;background: url("./image/login_icon-4.png") no-repeat -25px -25px;"></span>
+							<span class="pwd_icon"></span>
+							<div id="msgmobile2" class="msg_error" style="display:none;margin-top: -15px;margin-left: 50px;"><span></span>你还没有填写密码哦。</div>
+						</p>
+					</div>
+			        <div style="color:#FFFFFF;width:50px;height:19px;margin-top: -14px;margin-left: 15px;font-size: 15px;">验证码</div>
+			        <input style="width:97px;float:left;margin-left: 68px;margin-top: -21px;"type="text" name="yzm" maxlength="4" id="code" tabindex="3"/>
+				    <img style="float:right;margin-right: -16px;margin-top: -20px;height:30px;"src="{:U('home/login/yzm')}" height="35px" width="150px" onClick="this.src+='?' + Math.random();" alt="点击刷新验证码!"/>
+                    <div style="clear:both;"></div>
+					<div class="form_sub" style="margin-left: 144px;margin-top:2px;float:left;">
+						<input style="border-radius: 5px;"type="submit" value="立即登录" class="sub">
+                    </div>
+				</form>
+				
+            </div>
+
+            <script>
+	
+	var inps = document.getElementsByTagName('input');
+	var msgmobile = document.getElementById('msgmobile');
+	var pwdss = document.getElementById('pwdss');
+	var test = document.getElementById('test');
+	var msgmobile1 = document.getElementById('msgmobile1');
+	var test1 = document.getElementById('test1');
+	var msgmobile2 = document.getElementById('msgmobile2');
+	var test2 = document.getElementById('test2');
+	var msgmobile3 = document.getElementById('msgmobile3');
+	var test3 = document.getElementById('test3');
+	var s1 = false;
+	var s2 = false;
+	var s3 = false;
+	var s4 = false;
+	var s5 = false;
+	var s6 = false;
+	// 邮箱验证
+	function email(obj){
+		s1 = false;
+		obj.style.borderColor = '#ddd';
+		msgmobile.style.display = 'none';
+		test.style.display = 'none';
+		msgmobile.innerHTML = '你还没有填写邮箱哦。';
+		// test.style.background = 'url("./image/login_icon-4.png") no-repeat -25px -25px';
+		var val = obj.value;
+		var	newval = val.trim();
+		
+		var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+		emailp = reg.test(newval);
+		if(!newval){
+			msgmobile.style.display = 'block';
+			test.style.display = 'block';
+		}else if(!emailp){
+			msgmobile.innerHTML = '邮箱格式错误,请重新输入哦!';
+			msgmobile.style.display = 'block';
+			test.style.display = 'block';
+		}else{
+			// test.style.background = 'url("./image/login_icon-4.png") no-repeat -50px -25px';
+			test.style.display = 'block';
+			s1 = true;
+		}
+		// ajax验证邮箱是否重复
+		
+	}
+
+
+	// 验证密码
+	function pwd(obj){
+		s3 = false;
+		obj.style.borderColor = '#ddd';
+		msgmobile2.style.display = 'none';
+		test2.style.display = 'none';
+		msgmobile2.innerHTML = '你还没有填写密码哦。';
+		test2.style.background = 'url("./image/login_icon-4.png") no-repeat -25px -25px';
+		var val = obj.value;
+		newvals = val.trim();
+		var reg = /^\w{5,17}$/;
+		emailp = reg.test(newvals);
+		if(!newvals){
+			msgmobile2.style.display = 'block';
+			test2.style.display = 'block';
+		}else if(!emailp){
+			msgmobile2.innerHTML = '密码格式错误,请以字母开头,长度大于6位!';
+			msgmobile2.style.display = 'block';
+			test2.style.display = 'block';
+		}else{
+			test2.style.background = 'url("./image/login_icon-4.png") no-repeat -50px -25px';
+			test2.style.display = 'block';
+			s3 = true;
+		}
+	}
+
+	function dedao(de){
+		de.style.borderColor = '#fff';
+	}
+	function dedaos(de){
+		de.style.borderColor = '#fff';
+		pwdss.style.display = 'block';
+	}
+	function submi(sub){
+		if(s1 && s3){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	</script>
+			<div class="clear"></div>

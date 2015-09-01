@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style>
+		.table tr th{text-align: center;}
+		.table tr td{text-align: center;}
+		.trs td form{height: 10px;float: right;}
+		.trs td form button{margin-bottom: 10px;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+	<input type="hidden" id="type" value="{$type}">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr>
+			<th>ID</th>
+			<th>类别</th>
+			<th>PID</th>
+			<th>状态</th>
+			<th>路径</th>
+			<th align="center">操作</th>
+		</tr>
+		<foreach name="list" item="val">
+		<tr>
+			<td align="center">{$val.id}</td>
+			<td>{$val.name}</td>
+			<td class="pid">{$val.form_id}</td>
+			<td><span onclick="stats({$val['id']},this);" class="label label-success" style="Cursor:pointer;">{$val.display}</span></td>
+			<td>{$val.path}</td>
+			<td width="250px" id="action">
+				<a onclick="del({$val['id']},{$val['form_id']},this);" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i>删除</a>
+				<a onclick="edit({$val['id']},'{$val['gpath']}',this);" class="btn btn-info btn-small"><i class="icon-pencil icon-white"></i>编辑</a>
+				<a onclick="getSon({$val['id']})" class="btn btn-success btn-small"><i class="icon-zoom-in icon-white"></i><span>查看子分类</span></a>
+			</td>
+		</tr>
+		</foreach>
+		<tr>
+			<td colspan="15">{$page}</td>
+		</tr>
+	</table>
+</div>
+</body>
+<script>
+	var box = new BlackBox;
+	var pid;
+	var cname;
+	if($('#type').attr('value') == 'add') add();
+	$('#type').attr('value','index')
+	$('.pid').each(function(){
+		if($(this).html() != 0){
+			$(this).parent().children('td').last().children('a').last().attr('onclick','location.href="{:U("categorylist")}"').removeClass().addClass('btn btn-warning btn-small').find(':first-child').removeClass().addClass('icon-share-alt icon-white').next().html('返回');
+		}
+	});
+	function del(id,pid,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				if(pid == 0){
+					box.alert('无法删除根目录');
+				}else{
+					$.post('{:U("del")}',{'id':id,'pid':pid},function(message){
+						if(message == '0'){
+							box.alert('删除失败，不能删除根目录');
+						}else if(message == '1'){
+							box.alert('删除成功');
+							$(obj).parent().parent().remove();
+						}else if(message == '2'){
+							box.alert('删除失败');
+						}
+					})
+				}
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+	function edit(id,gpath,obj){
+		var categorylist;
+		var select = '<select id="checkPid" onchange="getPid(this)"><option value="0">根目录</option>';
+		var categoryname = $(obj).parent().parent().find(':first-child').next().html();
+		var categorypid = $(obj).parent().parent().find(':first-child').next().next().html()
+		$.post('{:U("getAll")}',function(data){
+			categorylist = data;
+			for(var i=0;i<categorylist.length;i++){
+				if(categorylist[i].id == id){
+					select += '<option selected value="'+categorylist[i].id+'">';
+				}else{
+					select += '<option value="'+categorylist[i].id+'">';
+				}
+				select += categorylist[i].name;
+				select += '</option>';
+			}
+			select += '</select>';
+			var table = '<div style="text-align:center">分类名:　<input autofocus placeholder="请输入分类名" onBlur="getName(this)" type="text" style="width:200px;"  value="'+categoryname+'"/><br />移动至:　'+select+'</div>';
+			box.confirm(table,function(data){
+				if(data){
+					if(cname == undefined) cname = categoryname;
+					if(pid == '0'){
+						var path = '0,';
+					}else{
+						if(gpath == '0,'){
+							var path = gpath + pid + ',';
+						}else{
+							var path = '0,' + pid + ',';
+						}
+					}
+					$.post('{:U("edit")}',{'form_id':pid,'name':cname,'id':id,'path':path},function(message){
+						if(message == '1'){
+							box.alert('修改成功');
+						}else if(message == '0'){
+							box.alert('请求失败！请检测是否未更改数据');
+						}
+					});
+				}
+				cname = undefined;
+				pid = undefined;
+			},{
+				title:'编辑分类',
+				value:'更新'
+			});
+		},'json');
+	}
+	function stats(id,obj){
+		if(obj.innerHTML == '已启用'){
+			box.confirm('确认屏蔽显示这个分类吗',function(data){
+				if(data){
+					$.post('{:U("stats")}',{'id':id,'display':'0'},function(message){
+						box.alert(message);
+						obj.innerHTML = '已禁用';
+						obj.className = 'label label-important';
+					});
+				}
+			},{
+				title:'注意',
+				value:'屏蔽'
+			});
+		}else if(obj.innerHTML == '已禁用'){
+			box.confirm('确认启用显示这个分类吗',function(data){
+				if(data){
+					$.post('{:U("stats")}',{'id':id,'display':'1'},function(message){
+						box.alert(message);
+						obj.innerHTML = '已启用';
+						obj.className = 'label label-success';
+					});
+				}
+			},{
+				title:'注意',
+				value:'启用'
+			});
+		}
+	}
+	function add(){
+		$.post('{:U("getAll")}',function(data){
+			var categorylist;
+			var select;
+			var div;
+			categorylist = data;
+			select = '<select onchange="getPid(this)"><option selected value="0">根目录</option>';
+			for(var i=0;i<categorylist.length;i++){
+				select += '<option value="'+categorylist[i].id+'">';
+				select += categorylist[i].name;
+				select += '</option>';
+			}
+			select += '</select>';
+			div = '<div style="text-align:center">分类名:　<input type="text" autofocus placeholder="请输入分类名" onBlur="getName(this)" name="name" style="width:200px;"/><br />添加至:　'+select+'</div>'
+			box.confirm(div,function(data){
+				if(data){
+					if(pid == undefined) pid = 0;
+					if(cname == undefined) cname = '未命名';
+					if(pid == 0){
+						var path = '0,';
+					}else{
+						var path = '0,' + pid + ',';
+					}
+					$.post('{:U("add")}',{'form_id':pid,'name':cname,'path':path},function(message){
+						if(message == '1'){
+							box.alert('添加成功');
+						}else if(message == '0'){
+							box.alert('添加失败');
+						}
+					});
+				}
+				cname = undefined;
+				pid = undefined;
+			},{
+				title:'添加分类',
+				value:'添加'
+			});
+		},'json');
+	}
+	function getSon(id){
+		location.href = '{:U(getSon)}'+'?id='+id;
+	}
+	function getPid(obj){
+		pid = obj.value;
+	}
+	function getName(obj){
+		cname = obj.value;
+	}
+	
+</script>
+</html>

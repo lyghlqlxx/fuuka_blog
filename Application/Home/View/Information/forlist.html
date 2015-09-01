@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<style>
+		.table tr th{text-align:center;}
+		.table tr td{text-align:center;}
+		.ss{text-decoration:none;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+		<table class="table table-condensed table-hover table-bordered table-striped">
+			<a href="{:U('read?read=0')}" class="btn btn-info" style="margin-bottom:20px">未读取</a>&nbsp;
+			<a href="{:U('read?read=1')}"	class="btn btn-warning" style="margin-bottom:20px">已读取</a>
+			<tr>
+				<th width="50">ID</th>
+				<th width="130">收信人</th>
+				<th width="130">发信人</th>
+				<th width="150">发送时间</th>
+				<th width="200">是否查看</th>
+				<th width="300">操作</th>
+			</tr>
+			<if condition="$list">
+			<foreach name="list" item="value">
+			<tr class="table_tr">
+				<td>{$value.id}</td>
+				<td>{$value.name}</td>
+				<td>{$value.send_id}</td>
+				<td>{$value.send_time}</td>
+				<td><if condition="($value.is_read eq '0')"><a class="btn btn-info" style="background:83E083" disabled="true">未读取</a><else/><a class="btn btn-warning" disabled="true">已读取</a></if></td>
+				<td><button class="btn" rel="{$value.id}" datatype='1'>点击查看私信</button>&#12288;<s class="btn btn-danger btn-small ss" onclick="del({$value[id]},this)" />删除<i class="icon-trash icon-white"></i></s></td>
+			</tr>
+			</foreach>
+			<else/>
+				<tr>
+					<th colspan="6">暂无数据</th>
+				</tr>
+			</if>
+			<tr>
+				<td colspan="6">{$page}</td>
+			</tr>
+		</table>
+</div>
+<script>
+	var mask = true;
+	$('.table_tr').children('td').find('button').click(function(){
+		var id = $(this).attr('rel');
+		var type = $(this).attr('datatype');
+		var index=$(this).index('button');
+		if(type==='1' && mask){
+			$('.table_tr').eq(index).children('td').children('button').attr('datatype','2');
+			$('.table_tr').eq(index).children('td').find('a:first').html('已读取').attr({'class':'btn btn-warning'}).removeAttr('style');
+			$.post('{:U("domessage")}',{'id':id},function(data){
+			$('.table_tr').eq(index).after('<tr><td colspan="6">'+data+'</td></tr>');
+			mask = false;
+		 })
+		}
+		if(type==='2' && mask == false){
+			$('.table_tr').eq(index).next().remove();
+			$('.table_tr').eq(index).children('td').children('button').attr('datatype','1');
+			mask = true;
+		}
+
+	})
+	var box = new BlackBox;
+	function del(id,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				$.post('{:U("del")}',{'id':id},function(message){
+					if(message == 1){
+						box.alert('删除成功');
+						$(obj).parent().parent().remove();
+					}else if(message == 2){
+						box.alert('删除失败');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+</script>
+</body>
+</html>

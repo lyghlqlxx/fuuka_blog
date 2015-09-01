@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/blackbox.css" media="screen"/>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.blackbox.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/admin/js/ajaxfileupload.js"></script>
+	<style>
+		.table tr th{text-align: center;}
+		.table tr td{text-align: center;}
+		.trs td form{height: 10px;float: right;}
+		.trs td form button{margin-bottom: 10px;}
+	</style>
+</head>
+<body style="padding:50px">
+<div style="width:90%;margin:0 auto;">
+	<table class="table table-condensed table-hover table-bordered table-striped">
+		<tr class="trs">
+			<td colspan="15" height="30px" align="right">
+			<form action="{:U('ss')}" method="post">
+				<select class="span2" name="lei" id="">
+					<option value="0">请选择类型</option>
+					<option value="1">BannerID</option>
+					<option value="2">BannerName</option>
+				</select>
+				<input type="text" name="name" placeholder="请输入内容查找" />
+				<button type="submit" class="btn">搜索</button>
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Alt</th>
+			<th>Status</th>
+			<th>Links</th>
+			<th>图像</th>
+			<th align="center">操作</th>
+		</tr>
+		<foreach name="list" item="val">
+		<tr>
+			<td class="info" align="center">{$val.id}</td>
+			<td class="info">{$val.title}</td>
+			<td class="info">{$val.alt}</td>
+			<td><span class="label label-success" style="Cursor:pointer;" onclick="status({$val['id']},this)">{$val.display}</span></td>
+			<a href="{$val.url}" target="_blank"><td class="info">{$val.url}</td></a>
+			<td><a href="javascript:viewImg('{$val['pic']}');">查看图像</a></td>
+			<td width="190px" id="action">
+				<a onclick="del({$val[id]},this);" class="btn btn-danger btn-small"><i class="icon-trash icon-white"></i>删除</a>
+				<a onclick="edit(this);" class="btn btn-info btn-small"><i class="icon-pencil icon-white"></i>编辑</a>
+			</td>
+		</tr>
+		</foreach>
+		<tr>
+			<td colspan="15">{$page}</td>
+		</tr>
+	</table>
+	<input type="hidden" id="type" value="{$type}">
+</div>
+</body>
+<script>
+	var box = new BlackBox;
+	var Title;
+	var Alt;
+	var Link;
+	var Img;
+	function del(id,obj){
+		box.confirm('确认删除吗？',function(data){
+			if(data){
+				$.post('{:U("del")}',{'id':id},function(message){
+					if(message == '1'){
+						box.alert('删除成功');
+						$(obj).parent().parent().remove();
+					}else if(message == '0'){
+						box.alert('删除失败');
+					}
+				})
+			}
+		},{
+			title:'注意',
+			value:'删除'
+		})
+	}
+	function status(id,obj){
+		if(obj.innerHTML == '已显示'){
+			box.confirm('确认屏蔽显示吗？',function(data){
+				if(data){
+					$.post('{:U("status")}',{'id':id,'display':'0'},function(message){
+						if(message == '1'){
+							box.alert('更改成功');
+							obj.innerHTML = '未显示';
+							obj.className = 'label label-important';
+						}
+					})
+				}
+			},{
+				title:'注意',
+				value:'屏蔽'
+			})
+		}else if(obj.innerHTML == '未显示'){
+			box.confirm('确认显示吗？',function(data){
+				if(data){
+					$.post('{:U("status")}',{'id':id,'display':'1'},function(message){
+						if(message == '1'){
+							box.alert('更改成功');
+							obj.innerHTML = '已显示';
+							obj.className = 'label label-success';
+						}
+					})
+				}
+			},{
+				title:'注意',
+				value:'显示'
+			})
+		}
+	}
+	function viewImg(image){
+		box.alert('<div style="text-align:center"><img src="__PUBLIC__/banner/'+image+'" /></div>');
+	}
+	function edit(obj){
+		var tdlist = $(obj).parent().parent().children('.info');
+		var div = '<div style="text-align:center">';
+		var info = [];
+		var action = '{:U("edit")}';
+		var time = new Date().getTime();
+		for(var i=0;i<tdlist.length;i++){
+			info.push(tdlist[i].innerHTML);
+		}
+		div += '标题　<input style="width:300px;" type="text" name="title" onblur="getTitle(this)" value="'+info[1]+'"/><br />';
+		div += '说明　 <input style="width:300px;" type="text" name="alt" onblur="getAlt(this)" value="'+info[2]+'"/><br />';
+		div += '链接　<input style="width:300px;" type="text" name="link" onblur="getLink(this)" value="'+info[3]+'"/><br />';
+		div += '<form id="myForm" method="post" action="'+action+'" enctype="multipart/form-data" target="asyncTarget">';
+		div += '图像　<input style="width:220px;" type="file" name="myFile" />';
+		div += '　<button style="width:60px;" class="btn btn-primary">上传</button>';
+		div += '<input type="hidden" name="filename" value="'+time+'"></form>';
+		div += '</div>'; 
+		div += '<iframe name="asyncTarget" style="display: none;"></iframe>';
+		box.confirm(div,function(data){
+			if(data){
+				$.post('{:U("edit")}',{'id':info[0],'title':Title,'alt':Alt,'url':Link,'pic':time+'.jpg'},function(message){
+					if(message == '1'){
+						box.alert('更新成功');
+					}else if(message == '0'){
+						box.alert('更新失败，请检测数据是否合法');
+					}
+				})
+			}
+		},{
+			title:'编辑此Banner',
+			value:'提交'
+		});
+	}
+	function add(){
+		var action = '{:U("add")}';
+		var time = new Date().getTime();
+		var div = '<div style="text-align:center">';
+		div += '标题　<input style="width:300px;" type="text" name="title" onblur="getTitle(this)"/><br />';
+		div += 'Alt　 <input style="width:300px;" type="text" name="alt" onblur="getAlt(this)"/><br />';
+		div += 'Link　<input style="width:300px;" type="text" name="link" onblur="getLink(this)"/><br />';
+		div += '<form id="myForm" method="post" action="'+action+'" enctype="multipart/form-data" target="asyncTarget">';
+		div += '图像　<input style="width:220px;" type="file" name="myFile" />';
+		div += '　<button style="width:60px;" class="btn btn-primary">上传</button>';
+		div += '<input type="hidden" name="filename" value="'+time+'"></form>';
+		div += '</div>';
+		div += '<iframe name="asyncTarget" style="display: none;"></iframe>';
+		box.confirm(div,function(data){
+			if(data){
+				$.post('{:U("add")}',{'title':Title,'alt':Alt,'url':Link,'pic':time+'.jpg'},function(message){
+					if(message == '1'){
+						box.alert('添加成功');
+					}else if(message == '0'){
+						box.alert('添加失败，请检测数据是否合法');
+					}
+				})
+			}
+		},{
+			title:'添加Banner',
+			value:'添加'
+		})
+	}
+	function getTitle(obj){
+		Title = obj.value;
+	}
+	function getAlt(obj){
+		Alt = obj.value;
+	}
+	function getLink(obj){
+		Link = obj.value;
+	}
+	if($('#type').attr('value') == 'add') add();
+</script>
+</html>

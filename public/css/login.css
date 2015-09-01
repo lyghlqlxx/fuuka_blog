@@ -1,0 +1,192 @@
+@charset('utf-8');
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, a, code, em, img, q, small, strong, 
+dd, dl, dt, ul, ol, li,
+fieldset, form, input, label, table, tbody, tr, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #333;
+	font-size: 12px;
+	line-height: 18px;
+	background-image: url('../images/bg.jpg');
+}
+
+a img, :link img, :visited img {
+	border: 0;
+}
+
+*, *:active, *:focus {
+    outline: 0 none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+ul {
+	list-style: none;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  color: #307DCA;
+  cursor: pointer;
+}
+
+h1 {
+	font-size: 16px;
+}
+h2, h3 {
+	font-size: 14px;
+}
+h4, h5, h6 {
+	font-size: 12px;
+}
+
+.align-middle {
+	vertical-align: middle;
+}
+
+/*----- LOGIN START -----*/
+.login-body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #DBDEE3;
+	background-image: url('../images/loginbg1.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-attachment: fixed;
+}
+
+#login-content {
+	height: 250px;
+	width: 300px;
+	display: block;
+	/*background-color: #fff;*/
+	/*border: 1px solid #ccc;*/
+	/*-webkit-border-radius: 8px;*/ /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+	/*-moz-border-radius: 12px;*/ /* Firefox 1-3.6 */
+	/*border-radius: 10px;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);*/
+	margin: -200px 0 0 -150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+#login-content h2 {
+	display: inline;
+	font-size: 26px;
+	color: #FFF;
+	padding-left: 5px;
+	text-shadow: 1px 1px 1px #666;
+}
+#login-content form {
+	margin-top: 20px;
+}
+
+.login-field {
+	width: 300px;
+	-webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+	margin-bottom: 8px;
+}
+
+.input-icon {
+	-webkit-border-radius: 6px 0 0 6px;
+	-moz-border-radius: 6px 0 0 6px;
+	border-radius: 6px 0 0 6px;
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	height: 35px;
+	width: 50px;
+	line-height: 35px;
+	background-image: url('../images/ico-login.png');
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.login-input {
+	-webkit-border-radius: 0 6px 6px 0;
+	-moz-border-radius: 0 6px 6px 0;
+	border-radius: 0 6px 6px 0;
+	border: 1px solid #CCC;
+	/*background-color: rgba(0, 0, 0, 0.7)*/
+	height: 35px;
+	width: 249px;
+	vertical-align: middle;
+	margin: -7px;
+}
+
+#login-btn {
+	background-image: url('../images/btn-login.png');
+	background-repeat: no-repeat;
+	display: block;
+	height: 40px;
+	width: 300px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 40px;
+	padding-left: 120px;
+	margin: 15px 0 10px 0;
+
+}
+
+#forgot-pwd {
+	color: #FFF;
+	font-weight: bold;
+	letter-spacing: 1px;
+	/*line-height: 20px;*/
+	text-shadow: 1px 1px 1px #666;
+}
+#forgot-pwd a:hover {
+	color: #EFF1F3;
+}
+
+#signup-teaser {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+	height: 125px;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	z-index: 10;
+}
+
+#signup-teaser h1 {
+	font-size: 35px;
+	line-height: 35px;
+	color: #FFF;
+	width: 800px;
+	position: absolute;
+	top: 45px;
+	left: 50%;
+	margin-left: -400px;
+}
+
+#signup-btn {
+	display: inline-block;
+	font-size: 18px;
+	line-height: 35px;
+	height: 35px;
+	padding: 0 50px;
+	background-color: #7CB15B;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+#signup-btn a, a:link, a:visited, a:hover{
+	color: #FFF;
+}
